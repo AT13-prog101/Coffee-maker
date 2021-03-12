@@ -2,13 +2,26 @@ package org.fundacionjala.prog101CoffeeMaker.coffeeMaker;
 
 public class PressureRelietValve {
     private boolean stateValve;
-    public void open(){
 
+    /**
+     * Change the state of stateValve to true
+     */
+    public void open() {
+        stateValve = true;
     }
-    public void close(){
 
+    /**
+     * Change the state of satetCalve to false
+     */
+    public void close() {
+        stateValve = false;
     }
-    public boolean stateValve(){
-        return false;
+
+    /**
+     * Return the state valve
+     * @return stateValve
+     */
+    public boolean stateValve() {
+        return stateValve;
     }
 }
