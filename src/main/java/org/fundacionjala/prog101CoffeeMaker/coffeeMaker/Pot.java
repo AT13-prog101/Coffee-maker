@@ -1,15 +1,19 @@
 package org.fundacionjala.prog101CoffeeMaker.coffeeMaker;
 
-public class Pot implements Container{
+public class Pot implements Container {
     private boolean isInPlace;
+
     @Override
     public boolean containLiquid() {
         return false;
     }
-    public boolean getIsInPlace(){
-        return false;
-    }
-    public void setIsInPlace(){
 
+    public boolean getIsInPlace() {
+        isInPlace = false;
+        return isInPlace;
+    }
+
+    public void setIsInPlace(boolean newPlace) {
+        isInPlace = newPlace;
     }
 }
