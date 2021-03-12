@@ -7,7 +7,7 @@ public class Outputs {
      * Print method
      * @param message
      */
-    public void print(String message) {
+    public void print(final String message) {
         System.out.println(message);
     }
 }
