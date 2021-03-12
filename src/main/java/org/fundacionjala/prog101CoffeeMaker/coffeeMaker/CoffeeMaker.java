@@ -20,58 +20,58 @@ public class CoffeeMaker {
     }
 
     /**
-     * This method only return object boiler
+     * Gets the boiler
      * @return Boiler
      */
-    public Boiler boiler() {
+    public Boiler getBoiler() {
         return boiler;
     }
 
     /**
-     * This method only return object plateSensor
+     * Gets the plate sensor
      * @return PlateSensor
      */
-    public PlateSensor plateSensor() {
+    public PlateSensor getPlateSensor() {
         return plateSensor;
     }
 
     /**
-     * This method only return object startButton
+     * Gets the start button
      * @return StartButton
      */
-    public StartButton startButton() {
+    public StartButton getStartButton() {
         return startButton;
     }
 
     /**
-     * This method only return object indicatorLight
+     * Gets the indicator light
      * @return IndicatorLight
      */
-    public IndicatorLight indicatorLight() {
+    public IndicatorLight getIndicatorLight() {
         return indicatorLight;
     }
 
     /**
-     * this method only return object filterAndReceptacle
+     * Gets the filter and receptacle
      * @return FilterAndReceptacle
      */
-    public FilterAndReceptacle filterAndReceptacle() {
+    public FilterAndReceptacle getFilterAndReceptacle() {
         return filterAndReceptacle;
     }
 
     /**
-     * This method only return object pot
+     * Gets the pot
      * @return Pot
      */
-    public Pot pot() {
+    public Pot getPot() {
         return pot;
     }
 
     /**
-     * This method only return object deliveryPipe
+     * Gets the delivery pipe.
      * @return
      */
-    public DeliveryPipe deliveryPipe() {
+    public DeliveryPipe getDeliveryPipe() {
         return deliveryPipe;
     }
 }

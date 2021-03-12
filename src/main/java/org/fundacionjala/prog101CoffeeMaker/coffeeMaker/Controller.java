@@ -12,7 +12,7 @@ public class Controller {
     }
 
     /**
-     * This method initialize the Coffee Maker
+     * Initialize the Coffee Maker
      */
     public void initialize() {
         outputs.print("Init Coffee Maker");
