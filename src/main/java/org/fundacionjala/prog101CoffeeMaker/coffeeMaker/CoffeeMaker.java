@@ -19,50 +19,57 @@ public class CoffeeMaker {
         deliveryPipe = new DeliveryPipe();
     }
 
-    /*
-     * this method only return object boiler
+    /**
+     * This method only return object boiler
+     * @return Boiler
      */
-    public Boiler boiler(){
+    public Boiler boiler() {
         return boiler;
     }
 
-    /*
-     * this method only return object plateSensor
+    /**
+     * This method only return object plateSensor
+     * @return PlateSensor
      */
     public PlateSensor plateSensor() {
         return plateSensor;
     }
 
-    /*
-     * this method only return object startButton
+    /**
+     * This method only return object startButton
+     * @return StartButton
      */
     public StartButton startButton() {
         return startButton;
     }
 
-    /*
-     * this method only return object indicatorLight
+    /**
+     * This method only return object indicatorLight
+     * @return IndicatorLight
      */
     public IndicatorLight indicatorLight() {
         return indicatorLight;
     }
 
-    /*
+    /**
      * this method only return object filterAndReceptacle
+     * @return FilterAndReceptacle
      */
     public FilterAndReceptacle filterAndReceptacle() {
         return filterAndReceptacle;
     }
 
-    /*
-     * this method only return object pot
+    /**
+     * This method only return object pot
+     * @return Pot
      */
     public Pot pot() {
         return pot;
     }
 
-    /*
-     * this method only return object deliveryPipe
+    /**
+     * This method only return object deliveryPipe
+     * @return
      */
     public DeliveryPipe deliveryPipe() {
         return deliveryPipe;
