@@ -6,7 +6,7 @@ public class Inputs {
     private String option;
 
     public String scanner() {
-        Scanner scanner = new Scanner();
+        Scanner scanner = new Scanner(System.in);
         option = scanner.nextLine();
         return option;
     }
