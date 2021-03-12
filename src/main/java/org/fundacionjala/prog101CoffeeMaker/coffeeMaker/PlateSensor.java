@@ -1,19 +1,23 @@
 package org.fundacionjala.prog101CoffeeMaker.coffeeMaker;
 
-public class PlateSensor implements Sensor{
+public class PlateSensor implements Sensor {
     private boolean statePlate;
+
     @Override
     public boolean getState() {
-        return false;
+        return this.statePlate;
     }
-    public void thereIsApot(){
 
+    public void thereIsAPot() {
+        statePlate = true;
     }
-    public void thereIsNoPot(){
 
+    public void thereIsNoPot() {
+        statePlate = false;
     }
-    public void thereIsAnEmptyPot(){
 
+    public void thereIsAnEmptyPot() {
+        statePlate = false;
     }
 
 }
