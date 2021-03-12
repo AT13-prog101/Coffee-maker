@@ -16,4 +16,10 @@ public class Pot implements Container {
     public void setIsInPlace(boolean newPlace) {
         isInPlace = newPlace;
     }
+
+
+
+
+
+    
 }
