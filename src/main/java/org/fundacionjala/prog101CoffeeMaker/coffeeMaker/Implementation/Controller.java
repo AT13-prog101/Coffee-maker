@@ -20,10 +20,10 @@ public class Controller {
         while (!coffeeMaker.getBoiler().containLiquid() || !coffeeMaker.getFilterAndReceptacle().getCoffeeGrains() || !coffeeMaker.getStartButton().getButtonPressed()) {
             outputs.instructions();
             outputs.entryOption(inputs.scanner(), coffeeMaker);
-            System.out.println();
+            outputs.print("");
         }
 
-        outputs.print("Starting coffee...");
+        outputs.print(outputs.formatColorGreen("Starting coffee..."));
 
     }
 
