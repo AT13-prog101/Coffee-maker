@@ -4,14 +4,14 @@ public class PressureRelietValve {
     private boolean stateValve;
 
     /**
-     * Change the state of stateValve to true
+     * Opens the valve changing the state of stateValve to true
      */
     public void open() {
         stateValve = true;
     }
 
     /**
-     * Change the state of satetCalve to false
+     * Closes the valve changing the state of stateValve to false
      */
     public void close() {
         stateValve = false;
