@@ -61,7 +61,7 @@ public class BoilerTest {
     }
 
     @Test
-    public void getCapacity_Twelve() {
+    public void getCupsOfWater_Twelve() {
         Boiler boiler = new Boiler();
         boiler.setCupsOfWater(12);
         int expected = 12;
@@ -70,7 +70,7 @@ public class BoilerTest {
     }
 
     @Test
-    public void setCapacity_NewCapacityZero_Zero() {
+    public void setCupsOfWater_NewCapacityZero_Zero() {
         Boiler boiler = new Boiler();
         boiler.setCupsOfWater(0);
         int expected = 0;
@@ -79,7 +79,7 @@ public class BoilerTest {
     }
 
     @Test
-    public void setCapacity_NewCapacityTwelve_Twelve() {
+    public void setCupsOfWater_NewCapacityTwelve_Twelve() {
         Boiler boiler = new Boiler();
         boiler.setCupsOfWater(12);
         int expected = 12;

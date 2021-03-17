@@ -9,7 +9,6 @@ public class Boiler implements Container, Heater {
     private WaterSensor waterSensor;
     private boolean workingBoiler;
     private int cupsOfWater;
-    private int capacity;
     public Boiler() {
         pressureRelietValve = new PressureRelietValve();
         waterSensor = new WaterSensor();
