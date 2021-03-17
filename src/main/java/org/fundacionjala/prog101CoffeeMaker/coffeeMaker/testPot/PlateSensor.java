@@ -3,7 +3,7 @@ package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.testPot;
 import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.testInterfaces.Sensor;
 
 public class PlateSensor implements Sensor {
-    private boolean statePlate;
+    private boolean statePlate = true;
 
     /**
      * Returns the state of plateSensor
@@ -12,6 +12,13 @@ public class PlateSensor implements Sensor {
     @Override
     public boolean getState() {
         return this.statePlate;
+    }
+
+    /**
+     * Sets the state of plateSensor
+     */
+    public void setState(final boolean newStatePlate) {
+        this.statePlate = newStatePlate;
     }
 
     /**

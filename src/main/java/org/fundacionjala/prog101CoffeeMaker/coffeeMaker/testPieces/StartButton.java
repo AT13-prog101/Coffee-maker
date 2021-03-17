@@ -7,9 +7,8 @@ public class StartButton {
      * Indicates the state of the buttonPressed
      * @return boolean
      */
-    public boolean isPressed() {
+    public void isPressed() {
         buttonPressed = true;
-        return buttonPressed;
     }
 
     /**
@@ -23,7 +22,7 @@ public class StartButton {
     /**
      * Changes the state of the buttonPressed
      */
-    public void setInit(final boolean newStateButton) {
+    public void setButtonState(final boolean newStateButton) {
         this.buttonPressed = newStateButton;
     }
 }

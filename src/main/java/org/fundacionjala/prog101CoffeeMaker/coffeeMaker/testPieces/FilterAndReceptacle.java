@@ -7,9 +7,8 @@ public class FilterAndReceptacle {
      * Sets coffee grains in the filter, so changes the coffeeGrains to True
      * @return boolean
      */
-    public boolean putCoffeeGrains() {
+    public void putCoffeeGrains() {
         coffeeGrains = true;
-        return coffeeGrains;
     }
 
     /**
