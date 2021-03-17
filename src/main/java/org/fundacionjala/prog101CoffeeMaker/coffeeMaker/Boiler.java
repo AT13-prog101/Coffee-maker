@@ -7,10 +7,10 @@ public class Boiler implements Container, Heater {
     private boolean workingBoiler;
     private int cupsOfWater;
 
-    public Boiler(final int newCupsOfWater) {
+    public Boiler() {
         pressureRelietValve = new PressureRelietValve();
         waterSensor = new WaterSensor();
-        this.cupsOfWater = newCupsOfWater;
+        this.cupsOfWater = 0;
     }
 
     private int capacity;
