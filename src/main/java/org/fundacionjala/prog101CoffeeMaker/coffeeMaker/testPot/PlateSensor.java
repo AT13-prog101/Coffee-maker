@@ -1,6 +1,6 @@
-package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.pot;
+package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.testPot;
 
-import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.interfaces.Sensor;
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.testInterfaces.Sensor;
 
 public class PlateSensor implements Sensor {
     private boolean statePlate;

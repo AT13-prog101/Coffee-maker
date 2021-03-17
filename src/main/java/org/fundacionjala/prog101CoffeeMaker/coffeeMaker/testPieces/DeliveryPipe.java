@@ -1,4 +1,4 @@
-package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.pieces;
+package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.testPieces;
 
 public class DeliveryPipe {
     private boolean deliveryWarmWater = true;

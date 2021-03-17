@@ -1,4 +1,4 @@
-package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.implementation;
+package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.testImplementation;
 
 public class Controller {
     private CoffeeMaker coffeeMaker;
