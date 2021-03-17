@@ -7,15 +7,16 @@ import static org.junit.Assert.*;
 public class StartButtonTest {
 
     @Test
-    public void isPressed() {
+    public void isPressed_True() {
         StartButton button = new StartButton();
         boolean expected = true;
-        boolean actual = button.isPressed();
+        button.isPressed();
+        boolean actual = button.getButtonPressed();
         assertEquals(expected, actual);
     }
 
     @Test
-    public void getButtonPressed() {
+    public void getButtonPressed_ButtonPressed() {
         StartButton button = new StartButton();
         boolean expected = false;
         boolean actual = button.getButtonPressed();
@@ -23,7 +24,7 @@ public class StartButtonTest {
     }
 
     @Test
-    public void setButtonState() {
+    public void setButtonState_NewButtonStateTrue_True() {
         StartButton button = new StartButton();
         boolean newState = true;
         boolean expected = true;

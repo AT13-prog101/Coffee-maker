@@ -7,9 +7,8 @@ public class StartButton {
      * Indicates the state of the buttonPressed
      * @return boolean
      */
-    public boolean isPressed() {
+    public void isPressed() {
         buttonPressed = true;
-        return buttonPressed;
     }
 
     /**

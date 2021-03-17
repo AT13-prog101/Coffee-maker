@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class IndicatorLightTest {
 
     @Test
-    public void turnOn() {
+    public void turnOn_LightState_True() {
         IndicatorLight indicatorLight = new IndicatorLight();
         boolean expected = true;
         indicatorLight.turnOn();
@@ -16,7 +16,7 @@ public class IndicatorLightTest {
     }
 
     @Test
-    public void turnOff() {
+    public void turnOff_LightState_False() {
         IndicatorLight indicatorLight = new IndicatorLight();
         boolean expected = false;
         indicatorLight.turnOff();
@@ -25,7 +25,7 @@ public class IndicatorLightTest {
     }
 
     @Test
-    public void getLight() {
+    public void getLight_LightState_False() {
         IndicatorLight indicatorLight = new IndicatorLight();
         boolean expected = false;
         boolean actual = indicatorLight.getLightState();
@@ -33,7 +33,7 @@ public class IndicatorLightTest {
     }
 
     @Test
-    public void setLight() {
+    public void setLight_NewLightState_True() {
         IndicatorLight indicatorLight = new IndicatorLight();
         boolean newState = true;
         boolean expected = true;
