@@ -1,6 +1,6 @@
 package org.fundacionjala.prog101CoffeeMaker;
 
-import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.testImplementation.Controller;
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Implementation.Controller;
 
 public final class Main {
 
