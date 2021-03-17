@@ -43,6 +43,10 @@ checkstyleMain {
     source = 'src/main/java'
 }
 
+run{
+    standardInput = System.in
+}
+
 checkstyleTest {
     source = 'src/main/java'
 }

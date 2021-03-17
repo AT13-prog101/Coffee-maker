@@ -15,7 +15,16 @@ public class Controller {
      * Initialize the Coffee Maker
      */
     public void initialize() {
-        outputs.print("Init Coffee Maker");
+        outputs.printHead();
+
+        while (!coffeeMaker.getBoiler().containLiquid() || !coffeeMaker.getFilterAndReceptacle().getCoffeeGrains() || !coffeeMaker.getStartButton().getButtonPressed()) {
+            outputs.instructions();
+            outputs.entryOption(inputs.scanner(), coffeeMaker);
+            System.out.println();
+        }
+
+        outputs.print("Starting coffee...");
+
     }
 
 }
