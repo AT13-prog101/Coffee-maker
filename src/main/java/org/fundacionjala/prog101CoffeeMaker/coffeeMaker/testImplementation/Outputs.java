@@ -48,7 +48,7 @@ public class Outputs {
                 break;
             case "2":
                 System.out.println("Selected option 2");
-                coffeeMaker.getBoiler().setCapacity(cupsWater);
+                coffeeMaker.getBoiler().setCupsOfWater(cupsWater);
                 if (coffeeMaker.getBoiler().containLiquid()) {
                     System.out.println("The water is ready");
                 }
