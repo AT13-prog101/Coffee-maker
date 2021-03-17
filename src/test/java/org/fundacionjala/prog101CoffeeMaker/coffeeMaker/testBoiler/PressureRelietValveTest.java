@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class PressureRelietValveTest {
 
     @Test
-    public void open() {
+    public void open_ValveOpen_True() {
         PressureRelietValve pressureRelietValve = new PressureRelietValve();
         pressureRelietValve.open();
         boolean expected = true;
@@ -17,7 +17,7 @@ public class PressureRelietValveTest {
     }
 
     @Test
-    public void close() {
+    public void close_ValveClose_False() {
         PressureRelietValve pressureRelietValve = new PressureRelietValve();
         pressureRelietValve.close();
         boolean expected = false;
