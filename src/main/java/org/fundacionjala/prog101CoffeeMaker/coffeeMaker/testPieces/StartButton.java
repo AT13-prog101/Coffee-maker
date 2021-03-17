@@ -23,7 +23,7 @@ public class StartButton {
     /**
      * Changes the state of the buttonPressed
      */
-    public void setInit(final boolean newStateButton) {
+    public void setButtonState(final boolean newStateButton) {
         this.buttonPressed = newStateButton;
     }
 }
