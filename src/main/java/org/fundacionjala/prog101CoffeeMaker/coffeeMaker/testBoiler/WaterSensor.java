@@ -6,7 +6,7 @@ public class WaterSensor implements Sensor {
     private boolean stateWater;
 
     /**
-     *
+     * set new state of water
      * @param newStateWater
      */
     public void setStateWater(final boolean newStateWater) {
