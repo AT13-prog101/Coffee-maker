@@ -14,7 +14,7 @@ public class DeliveryPipe {
     /**
      * Changes the state of the delivery pipe
      */
-    public void setDeliveryWarmWater(boolean deliveryPipe) {
+    public void setDeliveryWarmWater(final boolean deliveryPipe) {
         this.deliveryWarmWater = deliveryPipe;
     }
 }

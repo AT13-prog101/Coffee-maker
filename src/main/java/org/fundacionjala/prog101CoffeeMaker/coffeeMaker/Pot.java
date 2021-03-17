@@ -3,9 +3,11 @@ package org.fundacionjala.prog101CoffeeMaker.coffeeMaker;
 public class Pot implements Container {
     private boolean isInPlace;
     private boolean containsLiquid;
+    private int amountOfCups;
 
     /**
      * Returns the state of the container
+     *
      * @return boolean
      */
     @Override
@@ -15,6 +17,7 @@ public class Pot implements Container {
 
     /**
      * Gets the place where is the pot
+     *
      * @return boolean
      */
     public boolean getIsInPlace() {
@@ -22,9 +25,25 @@ public class Pot implements Container {
     }
 
     /**
-     * Changes the place of the container
+     * Changes the amount of cups
      */
-    public void setIsInPlace(boolean isInPlacePot) {
+    public void setIsInPlace(final boolean isInPlacePot) {
         this.isInPlace = isInPlacePot;
+    }
+
+    /**
+     * Gets the place where is the pot
+     *
+     * @return boolean
+     */
+    public int getAmountOfCups() {
+        return amountOfCups;
+    }
+
+    /**
+     * Changes the amount of cups
+     */
+    public void setAmountOfCups(final int newAmountOfCups) {
+        this.amountOfCups = newAmountOfCups;
     }
 }
