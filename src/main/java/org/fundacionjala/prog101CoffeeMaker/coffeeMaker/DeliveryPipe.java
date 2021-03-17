@@ -1,22 +1,20 @@
 package org.fundacionjala.prog101CoffeeMaker.coffeeMaker;
 
 public class DeliveryPipe {
-    private boolean deliveryWarmWater;
+    private boolean deliveryWarmWater = true;
 
     /**
-     * Description: this method get the state of the delivery pipe
-     *
-     * @return
+     * Gets the state of the delivery pipe
+     * @return boolean
      */
     public boolean getDeliveryWarmWater() {
         return deliveryWarmWater;
     }
 
     /**
-     * Description: this method change the state of the delivery pipe
-     * @return
+     * Changes the state of the delivery pipe
      */
-    public void setDeliveryWarmWater(final boolean deliveryWarmWater1) {
-        this.deliveryWarmWater = deliveryWarmWater1;
+    public void setDeliveryWarmWater(boolean deliveryPipe) {
+        this.deliveryWarmWater = deliveryPipe;
     }
 }

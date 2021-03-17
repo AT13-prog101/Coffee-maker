@@ -6,8 +6,8 @@ public class Inputs {
     private String option;
 
     /**
-     * Description: this method scans the inputs
-     * @return
+     * Scans all inputs
+     * @return String
      */
     public String scanner() {
         Scanner scanner = new Scanner(System.in);

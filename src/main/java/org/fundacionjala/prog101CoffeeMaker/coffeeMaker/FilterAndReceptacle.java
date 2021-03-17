@@ -4,20 +4,20 @@ public class FilterAndReceptacle {
     private boolean coffeeGrains;
 
     /**
-     * Description: this method get the state of the coffee grains
-     *
-     * @return
+     * Sets coffee grains in the filter, so changes the coffeeGrains to True
+     * @return boolean
      */
-    public boolean getCoffeeGrains() {
+    public boolean putCoffeeGrains() {
         coffeeGrains = true;
         return coffeeGrains;
     }
 
     /**
-     * Description: this method get the state of the coffee grains
-     * @return
+     * Return the state of the coffee grains
+     * @return boolean
      */
-    public void setCoffeeGrains(final boolean grains) {
-        this.coffeeGrains = grains;
+    public boolean getCoffeeGrains() {
+        return coffeeGrains;
     }
+
 }

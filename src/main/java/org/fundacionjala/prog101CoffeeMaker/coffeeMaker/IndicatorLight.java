@@ -1,37 +1,33 @@
 package org.fundacionjala.prog101CoffeeMaker.coffeeMaker;
 
 public class IndicatorLight {
-    private boolean light;
+    private boolean lightState;
 
     /**
-     * Description: this method turns on the light
-     * @return
+     * Turns on the light
      */
     public void turnOn() {
-        light = true;
+        lightState = true;
     }
 
     /**
-     * Description: this method turns off the light
-     * @return
+     * Turns off the light
      */
     public void turnOff() {
-        light = false;
+        lightState = false;
     }
 
     /**
-     * Description: this method get the state of the light
-     * @return
+     * Gets the state of the light
      */
     public boolean getLight() {
-        return light;
+        return lightState;
     }
 
     /**
-     * Description: this method change the state of the light
-     * @return
+     * Sets the state of the light
      */
-    public void setLight(final boolean newLight) {
-        this.light = newLight;
+    public void setLight(final boolean newLightState) {
+        this.lightState = newLightState;
     }
 }
