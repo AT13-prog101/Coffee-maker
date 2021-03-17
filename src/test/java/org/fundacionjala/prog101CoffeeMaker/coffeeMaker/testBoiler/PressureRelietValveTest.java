@@ -1,0 +1,45 @@
+package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.testBoiler;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+public class PressureRelietValveTest {
+
+    @Test
+    public void open() {
+        PressureRelietValve pressureRelietValve = new PressureRelietValve();
+        pressureRelietValve.open();
+        boolean expected = true;
+        boolean actual = pressureRelietValve.getStateValve();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void close() {
+        PressureRelietValve pressureRelietValve = new PressureRelietValve();
+        pressureRelietValve.close();
+        boolean expected = false;
+        boolean actual = pressureRelietValve.getStateValve();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getStateValve_True() {
+        PressureRelietValve pressureRelietValve = new PressureRelietValve();
+        pressureRelietValve.setStateValve(true);
+        boolean expected = true;
+        boolean actual = pressureRelietValve.getStateValve();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getStateValve_False() {
+        PressureRelietValve pressureRelietValve = new PressureRelietValve();
+        pressureRelietValve.setStateValve(false);
+        boolean expected = false;
+        boolean actual = pressureRelietValve.getStateValve();
+        Assert.assertEquals(expected, actual);
+    }
+}
