@@ -20,14 +20,14 @@ public class IndicatorLight {
     /**
      * Gets the state of the light
      */
-    public boolean getLight() {
+    public boolean getLightState() {
         return lightState;
     }
 
     /**
      * Sets the state of the light
      */
-    public void setLight(final boolean newLightState) {
+    public void setLightState(final boolean newLightState) {
         this.lightState = newLightState;
     }
 }

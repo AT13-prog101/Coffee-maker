@@ -9,14 +9,11 @@ public class Boiler implements Container, Heater {
     private WaterSensor waterSensor;
     private boolean workingBoiler;
     private int cupsOfWater;
-
     public Boiler() {
         pressureRelietValve = new PressureRelietValve();
         waterSensor = new WaterSensor();
         this.cupsOfWater = 0;
     }
-
-    private int capacity;
 
     /**
      * Returns true if the boiler contains liquid, otherwise false.
@@ -47,18 +44,26 @@ public class Boiler implements Container, Heater {
     }
 
     /**
-     * Obtains capacity
-     * @return capacity
+     * Obtains coups of water
+     * @return cupsOfWater
      */
-    public int getCapacity() {
-        return capacity;
+    public int getCupsOfWater() {
+        return cupsOfWater;
     }
 
     /**
-     * sets new Boiler capacity.
-     * @param newCapacity
+     * sets new capacity in coups of water.
+     * @param newCupsOfWater
      */
-    public void setCapacity(final int newCapacity) {
-        this.cupsOfWater = newCapacity;
+    public void setCupsOfWater(final int newCupsOfWater) {
+        this.cupsOfWater = newCupsOfWater;
+    }
+
+    /**
+     * obtains if Boiler is working or it's not working
+     * @return workingBoiler
+     */
+    public boolean getWorkingBoiler() {
+        return workingBoiler;
     }
 }

@@ -21,7 +21,15 @@ public class PressureRelietValve {
      * Return the state valve
      * @return stateValve
      */
-    public boolean stateValve() {
+    public boolean getStateValve() {
         return stateValve;
+    }
+
+    /**
+     *
+     * @param newStateValve
+     */
+    public void setStateValve(final boolean newStateValve) {
+        this.stateValve = newStateValve;
     }
 }
