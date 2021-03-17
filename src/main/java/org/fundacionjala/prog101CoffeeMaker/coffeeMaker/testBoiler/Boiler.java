@@ -59,6 +59,6 @@ public class Boiler implements Container, Heater {
      * @param newCapacity
      */
     public void setCapacity(final int newCapacity) {
-        this.capacity = newCapacity;
+        this.cupsOfWater = newCapacity;
     }
 }
