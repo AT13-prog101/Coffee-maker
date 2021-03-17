@@ -1,8 +1,13 @@
 package org.fundacionjala.prog101CoffeeMaker.coffeeMaker;
 
 public class Outputs {
-    public String response;
-    public void print(String message){
+    private String response;
+
+    /**
+     * Print method
+     * @param message
+     */
+    public void print(final String message) {
         System.out.println(message);
     }
 }

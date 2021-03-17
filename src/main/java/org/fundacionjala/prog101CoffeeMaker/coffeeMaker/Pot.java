@@ -2,18 +2,48 @@ package org.fundacionjala.prog101CoffeeMaker.coffeeMaker;
 
 public class Pot implements Container {
     private boolean isInPlace;
+    private boolean containsLiquid;
+    private int amountOfCups;
 
+    /**
+     * Returns the state of the container
+     *
+     * @return boolean
+     */
     @Override
     public boolean containLiquid() {
-        return false;
+        return containsLiquid;
     }
 
+    /**
+     * Gets the place where is the pot
+     *
+     * @return boolean
+     */
     public boolean getIsInPlace() {
-        isInPlace = false;
         return isInPlace;
     }
 
-    public void setIsInPlace(boolean newPlace) {
-        isInPlace = newPlace;
+    /**
+     * Changes the amount of cups
+     */
+    public void setIsInPlace(final boolean isInPlacePot) {
+        this.isInPlace = isInPlacePot;
+    }
+
+    /**
+     * Gets the place where is the pot
+     *
+     * @return boolean
+     */
+    public int getAmountOfCups() {
+        return amountOfCups;
+    }
+
+    /**
+     * Changes the amount of cups
+     */
+    public void setAmountOfCups(final int newAmountOfCups) {
+        this.amountOfCups = newAmountOfCups;
     }
 }

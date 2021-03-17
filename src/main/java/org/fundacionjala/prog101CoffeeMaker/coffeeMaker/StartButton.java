@@ -1,18 +1,29 @@
 package org.fundacionjala.prog101CoffeeMaker.coffeeMaker;
 
 public class StartButton {
-    private boolean init;
+    private boolean buttonPressed;
 
+    /**
+     * Indicates the state of the buttonPressed
+     * @return boolean
+     */
     public boolean isPressed() {
-        init = true;
-        return init;
+        buttonPressed = true;
+        return buttonPressed;
     }
 
-    public boolean getInit() {
-        return init;
+    /**
+     * Description: this method returns the state of the buttonPressed
+     * @return boolean
+     */
+    public boolean getButtonPressed() {
+        return buttonPressed;
     }
 
-    public void setInit(boolean newInit) {
-        this.init = newInit;
+    /**
+     * Changes the state of the buttonPressed
+     */
+    public void setInit(final boolean newStateButton) {
+        this.buttonPressed = newStateButton;
     }
 }
