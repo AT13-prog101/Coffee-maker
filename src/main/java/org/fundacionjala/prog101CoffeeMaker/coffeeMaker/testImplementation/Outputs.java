@@ -61,7 +61,7 @@ public class Outputs {
                 }
                 break;
             default:
-                System.out.println("Option not available, bye...!!!");
+                System.out.println("Option not available, choose one of the given above");
                 break;
         }
     }
