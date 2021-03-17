@@ -4,7 +4,7 @@ public class WaterSensor implements Sensor {
     private boolean stateWater;
 
     /**
-     * return the state of WaterSensor
+     * returns the state of WaterSensor
      * @return boolean
      */
     @Override
@@ -13,16 +13,16 @@ public class WaterSensor implements Sensor {
     }
 
     /**
-     * Change the stateWater to true
+     * Changes the stateWater to true
      */
-    public void thereIsWater() {
+    public void thereIsWaterInBoiler() {
         stateWater = true;
     }
 
     /**
-     * Change the stateWater to false
+     * Changes the stateWater to false
      */
-    public void thereIsNoWater() {
+    public void thereIsNoWaterInBoiler() {
         stateWater = false;
     }
 }
