@@ -1,4 +1,4 @@
-package org.fundacionjala.prog101CoffeeMaker.coffeeMaker;
+package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.pieces;
 
 public class FilterAndReceptacle {
     private boolean coffeeGrains;

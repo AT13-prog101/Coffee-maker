@@ -1,4 +1,6 @@
-package org.fundacionjala.prog101CoffeeMaker.coffeeMaker;
+package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.pot;
+
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.interfaces.Container;
 
 public class Pot implements Container {
     private boolean isInPlace;

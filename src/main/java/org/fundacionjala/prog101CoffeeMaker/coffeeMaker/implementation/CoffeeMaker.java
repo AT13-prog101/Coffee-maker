@@ -1,4 +1,12 @@
-package org.fundacionjala.prog101CoffeeMaker.coffeeMaker;
+package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.implementation;
+
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.boiler.Boiler;
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.pieces.DeliveryPipe;
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.pieces.FilterAndReceptacle;
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.pieces.IndicatorLight;
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.pieces.StartButton;
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.pot.PlateSensor;
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.pot.Pot;
 
 public class CoffeeMaker {
     private Boiler boiler;

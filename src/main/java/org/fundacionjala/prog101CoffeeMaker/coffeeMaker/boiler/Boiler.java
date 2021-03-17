@@ -1,4 +1,7 @@
-package org.fundacionjala.prog101CoffeeMaker.coffeeMaker;
+package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.boiler;
+
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.interfaces.Container;
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.interfaces.Heater;
 
 public class Boiler implements Container, Heater {
 

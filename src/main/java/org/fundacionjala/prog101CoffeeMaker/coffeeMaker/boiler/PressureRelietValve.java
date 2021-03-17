@@ -1,4 +1,4 @@
-package org.fundacionjala.prog101CoffeeMaker.coffeeMaker;
+package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.boiler;
 
 public class PressureRelietValve {
     private boolean stateValve;

@@ -1,4 +1,6 @@
-package org.fundacionjala.prog101CoffeeMaker.coffeeMaker;
+package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.boiler;
+
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.interfaces.Sensor;
 
 public class WaterSensor implements Sensor {
     private boolean stateWater;
