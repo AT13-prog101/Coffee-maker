@@ -6,6 +6,14 @@ public class WaterSensor implements Sensor {
     private boolean stateWater;
 
     /**
+     *
+     * @param newStateWater
+     */
+    public void setStateWater(final boolean newStateWater) {
+        this.stateWater = newStateWater;
+    }
+
+    /**
      * returns the state of WaterSensor
      * @return boolean
      */
