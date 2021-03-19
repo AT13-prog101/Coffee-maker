@@ -12,8 +12,9 @@ public class Inputs {
      */
     public String scanner() {
         scanner = new Scanner(System.in);
-        System.out.println("choose one option :");
         option = scanner.nextLine();
         return option;
     }
+
+
 }

@@ -21,114 +21,51 @@ public class Outputs {
     }
 
     /**
-     * Print error in color red
+     * Changed format for print error in color red
      * @param message
      */
     public String formatError(final String message) {
-        return (colorRed + "Error : " + message + colorReset);
+        return colorRed + "Error : " + message + colorReset;
     }
 
     /**
-     * Print option selected in color green
+     * Changed format for print in color green
      * @param message
      */
     public String formatColorGreen(final String message) {
-        return (colorGreen + message + colorReset);
+        return colorGreen + message + colorReset;
+    }
+
+    /**
+     * Changed format for print in color yellow
+     * @param message
+     */
+    public String formatColorYellow(final String message) {
+        return colorCyan + message + colorReset;
     }
 
     /**
      * print head for Coffee Maker
      */
-    public void printHead() {
-        print("-----------------------------------");
-        print("    Welcome to Coffee Maker");
-        print("-----------------------------------");
+    public String printHead() {
+        String message1 = "-----------------------------------\n";
+        String message2 = "    Welcome to Coffee Maker\n";
+        String message3 = "-----------------------------------";
+        return message1 + message2 + message3;
     }
 
     /**
      * print instructions
      */
-    public void instructions() {
-        print("1. Init Coffee Maker");
-        print("2. Load 12 glasses of water");
-        print("3. Load coffee beans into the filter");
-        print("4. Exit");
-        print("-----------------------------------");
+    public String instructions() {
+        String message1 = "1. Init Coffee Maker\n";
+        String message2 = "2. Load 12 glasses of water\n";
+        String message3 = "3. Load coffee beans into the filter\n";
+        String message4 = "4. Exit\n";
+        String message5 = "-----------------------------------\n";
+        String message6 = "Choose one option :";
+        return message1 + message2 + message3 + message4 + message5 + message6;
     }
 
-    /**
-     * Selected any option available
-     * @param option
-     */
-    public void entryOption(final String option, final CoffeeMaker coffeeMaker) {
-        switch (option) {
-            case "1":
-                print(formatColorGreen("Selected option 1"));
-                actionForOption1(coffeeMaker);
-                break;
-            case "2":
-                print(formatColorGreen("Selected option 2"));
-                actionForOption2(coffeeMaker);
-                break;
-            case "3":
-                print(formatColorGreen("Selected option 3"));
-                actionForOption3(coffeeMaker);
-                break;
-            case "4":
-                print(formatColorGreen("Selected option 4, bye...!!!"));
-                System.exit(0);
-                break;
-            default:
-                print(formatError("Option not available, choose one of the given above"));
-                break;
-        }
-    }
 
-    /**
-     * Verify if there is water and coffee in the coffee maker, if there is, start the coffee process
-     * @param coffeeMaker
-     */
-    public void actionForOption1(final CoffeeMaker coffeeMaker) {
-        boolean state = true;
-        if (!coffeeMaker.getBoiler().containLiquid()) {
-            print(formatError("There's no water"));
-            state = false;
-        }
-        if (!coffeeMaker.getFilterAndReceptacle().getCoffeeGrains()) {
-            print(formatError("There is no coffee in the filter"));
-            state = false;
-        }
-        if (state) {
-            coffeeMaker.getStartButton().isPressed();
-        }
-    }
-
-    /**
-     * Added water in CoffeeMaker
-     * @param coffeeMaker
-     */
-    public void actionForOption2(final CoffeeMaker coffeeMaker) {
-        final int cupsWater = 12;
-        if (!coffeeMaker.getBoiler().containLiquid()) {
-            print(formatColorGreen("Adding water..."));
-            coffeeMaker.getBoiler().setCupsOfWater(cupsWater);
-            print(formatColorGreen("The water is ready"));
-        } else {
-            print(formatColorGreen("The water is ready"));
-        }
-    }
-
-    /**
-     * Added coffee in CoffeeMaker
-     * @param coffeeMaker
-     */
-    public void actionForOption3(final CoffeeMaker coffeeMaker) {
-        if (!coffeeMaker.getFilterAndReceptacle().getCoffeeGrains()) {
-            print(formatColorGreen("Adding coffee to the coffee filter..."));
-            coffeeMaker.getFilterAndReceptacle().putCoffeeGrains();
-            print(formatColorGreen("The coffee is ready"));
-        } else {
-            print(formatColorGreen("The coffee is ready"));
-        }
-    }
 }
