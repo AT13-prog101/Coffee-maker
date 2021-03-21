@@ -2,85 +2,70 @@ package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Implementation;
 
 public class Outputs {
     private String response;
+    private final String colorReset = "\u001B[0m";
+    private final String colorBlack = "\u001B[30m";
+    private final String colorRed = "\u001B[31m";
+    private final String colorGreen = "\u001B[32m";
+    private final String colorYellow = "\u001B[33m";
+    private final String colorBlue = "\u001B[34m";
+    private final String colorPurple = "\u001B[35m";
+    private final String colorCyan = "\u001B[36m";
+    private final String colorWhite = "\u001B[37m";
 
     /**
      * Print method
-     *
      * @param message
      */
     public void print(final String message) {
-        System.out.println("message : " + message);
+        System.out.println(message);
+    }
+
+    /**
+     * Changed format for print error in color red
+     * @param message
+     */
+    public String formatError(final String message) {
+        return colorRed + "Error : " + message + colorReset;
+    }
+
+    /**
+     * Changed format for print in color green
+     * @param message
+     */
+    public String formatColorGreen(final String message) {
+        return colorGreen + message + colorReset;
+    }
+
+    /**
+     * Changed format for print in color yellow
+     * @param message
+     */
+    public String formatColorYellow(final String message) {
+        return colorCyan + message + colorReset;
     }
 
     /**
      * print head for Coffee Maker
      */
-    public void printHead() {
-        System.out.println("-----------------------------------");
-        System.out.println("    Welcome to Coffee Maker");
-        System.out.println("-----------------------------------");
+    public String printHead() {
+        String message1 = "-----------------------------------\n";
+        String message2 = "    Welcome to Coffee Maker\n";
+        String message3 = "-----------------------------------";
+        return message1 + message2 + message3;
     }
 
     /**
      * print instructions
      */
-    public void instructions() {
-        System.out.println("1. Init Coffee Maker");
-        System.out.println("2. Load 12 glasses of water");
-        System.out.println("3. Load coffee beans into the filter");
-        System.out.println("other. exit");
-        System.out.println("-----------------------------------");
+    public String instructions() {
+        String message1 = "1. Init Coffee Maker\n";
+        String message2 = "2. Load 12 glasses of water\n";
+        String message3 = "3. Load coffee beans into the filter\n";
+        String message4 = "4. Exit\n";
+        String message5 = "-----------------------------------\n";
+        String message6 = "Choose one option :";
+        return message1 + message2 + message3 + message4 + message5 + message6;
     }
 
-    /**
-     * Selected any option available
-     *
-     * @param option
-     */
-    public void entryOption(final String option, final CoffeeMaker coffeeMaker) {
-        final int cupsWater = 12;
-        switch (option) {
-            case "1":
-                System.out.println("Selected option 1");
-                if (verifyConditionsForMakeCoffee(coffeeMaker)) {
-                    coffeeMaker.getStartButton().isPressed();
-                }
-                break;
-            case "2":
-                System.out.println("Selected option 2");
-                coffeeMaker.getBoiler().setCupsOfWater(cupsWater);
-                if (coffeeMaker.getBoiler().containLiquid()) {
-                    System.out.println("The water is ready");
-                }
-                break;
-            case "3":
-                System.out.println("Selected option 3");
-                coffeeMaker.getFilterAndReceptacle().putCoffeeGrains();
-                if (coffeeMaker.getFilterAndReceptacle().getCoffeeGrains()) {
-                    System.out.println("The coffee is ready");
-                }
-                break;
-            default:
-                System.out.println("Option not available, choose one of the given above");
-                break;
-        }
-    }
 
-    /**
-     * Verify if there is water and coffee
-     *
-     * @param coffeeMaker
-     */
-    public boolean verifyConditionsForMakeCoffee(final CoffeeMaker coffeeMaker) {
-        boolean state = true;
-        if (!coffeeMaker.getBoiler().containLiquid()) {
-            System.out.println("Error : There's no water");
-            state = false;
-        }
-        if (!coffeeMaker.getFilterAndReceptacle().getCoffeeGrains()) {
-            System.out.println("Error : There is no coffee in the filter");
-            state = false;
-        }
-        return state;
-    }
 }
