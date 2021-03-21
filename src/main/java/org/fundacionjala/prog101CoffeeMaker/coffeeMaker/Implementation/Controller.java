@@ -16,7 +16,7 @@ public class Controller {
      */
     public void initialize() {
         outputs.print(outputs.printHead());
-        while (!coffeeMaker.getStartButton().getButtonPressed()) {
+        while (!coffeeMaker.getStartButton().getButtonPressed() || !coffeeMaker.getPlateSensor().getState()) {
             outputs.print(outputs.instructions());
             entryOption(inputs.scanner());
             outputs.print("");
@@ -29,25 +29,57 @@ public class Controller {
      */
     public void entryOption(final String option) {
         final int cupsWater = 12;
-        switch (option) {
-            case "1":
-                initCoffeeMaker();
-                break;
-            case "2":
-                loadWater(cupsWater);
-                break;
-            case "3":
-                loadCoffeeBeans();
-                break;
-            case "4":
-                exit();
-                break;
-            default:
-                outputs.print(outputs.formatError("Option not available, choose one of the given above"));
-                break;
-        }
+            switch (option) {
+                case "1":
+                    initCoffeeMaker();
+                    break;
+                case "2":
+                    loadWater(cupsWater);
+                    break;
+                case "3":
+                    loadCoffeeBeans();
+                    break;
+                case "4":
+                    loadPotOverHeater();
+                    break;
+                case "5":
+                    removePotOverHeater();
+                    break;
+                case "6":
+                    exit();
+                    break;
+                default:
+                    outputs.print(outputs.formatError("Option not available, choose one of the given above"));
+                    break;
+            }
     }
 
+    /**
+     * remove the pot of the sensor plate
+     */
+    public void removePotOverHeater() {
+        outputs.print(outputs.formatColorGreen("Selected option 5"));
+        if (!coffeeMaker.getPot().getIsInPlace()) {
+            outputs.print(outputs.formatColorYellow("The pot is not longer on the sensor plate"));
+        } else {
+            outputs.print(outputs.formatColorGreen("removing the pot ..."));
+            coffeeMaker.getPot().setIsInPlace(false);
+            outputs.print(outputs.formatColorYellow("The pot has been removed."));
+        }
+    }
+    /**
+     * Load the pot on the sensor plate
+     */
+    public void loadPotOverHeater() {
+        outputs.print(outputs.formatColorGreen("Selected option 4"));
+        if (!coffeeMaker.getPot().getIsInPlace()) {
+            outputs.print(outputs.formatColorGreen("Placing the pot ..."));
+            coffeeMaker.getPot().setIsInPlace(true);
+            outputs.print(outputs.formatColorGreen("The pot is ready"));
+        } else {
+            outputs.print(outputs.formatColorYellow("The pot is already in place"));
+        }
+    }
     /**
      * Verify if there is water and coffee in the coffee maker, if there is, start the coffee process
      */
@@ -55,8 +87,9 @@ public class Controller {
         outputs.print(outputs.formatColorGreen("Selected option 1"));
         if (verifyConditionsForCoffeeMaker()) {
             coffeeMaker.getStartButton().isPressed();
+            coffeeMaker.getPlateSensor().thereIsAPot();
         } else {
-            outputs.print(outputs.formatError("There are no water or no coffee beans in the filter"));
+            outputs.print(outputs.formatError("There are no water or no coffee beans in the filter or pot"));
         }
     }
 
@@ -71,9 +104,22 @@ public class Controller {
         if (!containCoffeeBeans()) {
             state = false;
         }
+        if (!potInPlace()) {
+            state = false;
+        }
         return state;
     }
 
+    /**
+     * check if it has water
+     * @return
+     */
+    public boolean potInPlace() {
+        if (!coffeeMaker.getPot().getIsInPlace()) {
+            return false;
+        }
+        return true;
+    }
     /**
      * check if it has water
      * @return

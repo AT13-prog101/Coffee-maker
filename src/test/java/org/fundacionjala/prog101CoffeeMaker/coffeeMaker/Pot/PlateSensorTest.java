@@ -9,7 +9,7 @@ public class PlateSensorTest {
     @Test
     public void getState_False() {
         PlateSensor plateSensor = new PlateSensor();
-        boolean expected = true;
+        boolean expected = false;
         boolean actual = plateSensor.getState();
         assertEquals(expected, actual);
     }

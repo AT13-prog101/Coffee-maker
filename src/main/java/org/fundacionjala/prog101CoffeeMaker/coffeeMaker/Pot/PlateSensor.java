@@ -3,7 +3,7 @@ package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Pot;
 import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Interfaces.Sensor;
 
 public class PlateSensor implements Sensor {
-    private boolean statePlate = true;
+    private boolean statePlate = false;
 
     /**
      * Returns the state of plateSensor
