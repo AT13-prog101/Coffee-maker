@@ -28,6 +28,30 @@ public class CoffeeMaker {
     }
 
     /**
+     * A
+     * @return
+     */
+    public boolean isFilterWithCoffeeBeans() {
+        return filterAndReceptacle.getCoffeeGrains();
+    }
+
+    /**
+     * a
+     * @return
+     */
+    public boolean isBoilerWithWater() {
+        return boiler.containLiquid();
+    }
+
+    /**
+     * a
+     * @return
+     */
+    public boolean isPotOverPlateHeater() {
+        return pot.getIsInPlace();
+    }
+
+    /**
      * Gets the boiler
      * @return Boiler
      */
