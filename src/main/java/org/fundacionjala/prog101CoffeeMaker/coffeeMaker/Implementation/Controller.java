@@ -72,9 +72,9 @@ public class Controller {
      */
     public void loadPotOverHeaterPlatePot() {
         outputs.print(outputs.formatColorGreen("Selected option 4"));
-        if (!coffeeMaker.getPot().getIsInPlace()) {
+        if (!coffeeMaker.isPotInPlace()) {
             outputs.print(outputs.formatColorGreen("Placing the pot ..."));
-            coffeeMaker.getPot().setIsInPlace(true);
+            coffeeMaker.putPotInNewPlace(true);
             outputs.print(outputs.formatColorGreen("The pot is ready"));
         } else {
             outputs.print(outputs.formatColorYellow("The pot is already in place"));
