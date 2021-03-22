@@ -24,7 +24,11 @@ public class CoffeeMakerTest {
     }
 
     @Test
-    public void isPotOverPlateHeater() {
+    public void isPotOverPlateHeater_VerifyIfPotIsOverPlateHeater_False() {
+        CoffeeMaker coffeeMaker = new CoffeeMaker();
+        boolean expected = false;
+        boolean actual = coffeeMaker.isPotOverPlateHeater();
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
