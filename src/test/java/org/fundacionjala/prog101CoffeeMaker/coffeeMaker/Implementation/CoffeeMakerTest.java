@@ -60,15 +60,29 @@ public class CoffeeMakerTest {
     }
 
     @Test
-    public void getStartButton() {
+    public void obtainsStartButtonState() {
+        CoffeeMaker coffeeMaker = new CoffeeMaker();
+        boolean expected = false;
+        boolean actual = coffeeMaker.obtainsStartButtonState();
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void getIndicatorLight() {
+    public void fillBoilerWithWater_BoilerWithTwelveCups_Twelve() {
+        CoffeeMaker coffeeMaker = new CoffeeMaker();
+        coffeeMaker.fillBoilerWithWater(12);
+        int expected = 12;
+        int actual = coffeeMaker.getBoiler().getCupsOfWater();
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void getFilterAndReceptacle() {
+    public void fillBoilerWithWater_BoilerWithZeroCups_Zero() {
+        CoffeeMaker coffeeMaker = new CoffeeMaker();
+        coffeeMaker.fillBoilerWithWater(0);
+        int expected = 0;
+        int actual = coffeeMaker.getBoiler().getCupsOfWater();
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
