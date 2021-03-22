@@ -86,6 +86,15 @@ public class CoffeeMakerTest {
     }
 
     @Test
+    public void fillFilterWithCoffeeGrains_PutCoffeeGrainsIntoFilter_true() {
+        CoffeeMaker coffeeMaker = new CoffeeMaker();
+        coffeeMaker.fillFilterWithCoffeeGrains();
+        boolean expected = true;
+        boolean actual = coffeeMaker.getFilterAndReceptacle().getCoffeeGrains();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void getPot() {
     }
 
