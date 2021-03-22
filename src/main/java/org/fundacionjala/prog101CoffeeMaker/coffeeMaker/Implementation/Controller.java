@@ -63,7 +63,7 @@ public class Controller {
             outputs.print(outputs.formatColorYellow("The pot is not longer on the sensor plate"));
         } else {
             outputs.print(outputs.formatColorGreen("Removing the pot ..."));
-            coffeeMaker.putPotInNewPlace(false);
+            coffeeMaker.changePlacePot(false);
             outputs.print(outputs.formatColorYellow("The pot has been removed."));
         }
     }
@@ -74,7 +74,7 @@ public class Controller {
         outputs.print(outputs.formatColorGreen("Selected option 4"));
         if (!coffeeMaker.isPotInPlace()) {
             outputs.print(outputs.formatColorGreen("Placing the pot ..."));
-            coffeeMaker.putPotInNewPlace(true);
+            coffeeMaker.changePlacePot(true);
             outputs.print(outputs.formatColorGreen("The pot is ready"));
         } else {
             outputs.print(outputs.formatColorYellow("The pot is already in place"));
