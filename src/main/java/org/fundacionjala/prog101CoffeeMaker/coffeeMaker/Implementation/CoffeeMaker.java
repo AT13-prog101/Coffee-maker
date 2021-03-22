@@ -31,6 +31,14 @@ public class CoffeeMaker {
      * Returns true if the pot is it's place
      * @return boolean
      */
+    public boolean obtainsStartButtonState() {
+        return startButton.getButtonPressed();
+    }
+
+    /**
+     * Returns true if the pot is it's place
+     * @return boolean
+     */
     public boolean isPotInPlace() {
         return pot.getIsInPlace();
     }
