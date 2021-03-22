@@ -59,11 +59,11 @@ public class Controller {
      */
     public void removePotOverPlateHeater() {
         outputs.print(outputs.formatColorGreen("Selected option 5"));
-        if (!coffeeMaker.getPot().getIsInPlace()) {
+        if (!coffeeMaker.isPotInPlace()) {
             outputs.print(outputs.formatColorYellow("The pot is not longer on the sensor plate"));
         } else {
             outputs.print(outputs.formatColorGreen("removing the pot ..."));
-            coffeeMaker.getPot().setIsInPlace(false);
+            coffeeMaker.putPotInNewPlace(false);
             outputs.print(outputs.formatColorYellow("The pot has been removed."));
         }
     }

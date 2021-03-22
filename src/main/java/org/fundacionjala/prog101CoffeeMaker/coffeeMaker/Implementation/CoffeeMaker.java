@@ -28,24 +28,39 @@ public class CoffeeMaker {
     }
 
     /**
-     * A
-     * @return
+     * Returns true if the pot is it's place
+     * @return boolean
+     */
+    public boolean isPotInPlace() {
+        return pot.getIsInPlace();
+    }
+
+    /**
+     * Sets the new place of the pot
+     */
+    public void putPotInNewPlace(final boolean newPlace) {
+        pot.setIsInPlace(newPlace);
+    }
+
+    /**
+     * Returns true if the filter contains coffee grains
+     * @return boolean
      */
     public boolean isFilterWithCoffeeBeans() {
         return filterAndReceptacle.getCoffeeGrains();
     }
 
     /**
-     * a
-     * @return
+     * Returns true if the boiler contains water
+     * @return boolean
      */
     public boolean isBoilerWithWater() {
         return boiler.containLiquid();
     }
 
     /**
-     * a
-     * @return
+     * Returns true if the pot is on the sensor plate
+     * @return boolean
      */
     public boolean isPotOverPlateHeater() {
         return pot.getIsInPlace();
@@ -101,7 +116,7 @@ public class CoffeeMaker {
 
     /**
      * Gets the delivery pipe.
-     * @return
+     * @return DeliveryPipe state
      */
     public DeliveryPipe getDeliveryPipe() {
         return deliveryPipe;
