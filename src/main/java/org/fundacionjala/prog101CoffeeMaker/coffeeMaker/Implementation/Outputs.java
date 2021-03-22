@@ -61,10 +61,12 @@ public class Outputs {
         String message1 = "1. Init Coffee Maker\n";
         String message2 = "2. Load 12 glasses of water\n";
         String message3 = "3. Load coffee beans into the filter\n";
-        String message4 = "4. Exit\n";
-        String message5 = "-----------------------------------\n";
-        String message6 = "Choose one option :";
-        return message1 + message2 + message3 + message4 + message5 + message6;
+        String message4 = "4. Load Pot over Plate Heater\n";
+        String message5 = "5. Remove Pot of over Plate Heater\n";
+        String message6 = "6. Exit\n";
+        String message7 = "-----------------------------------\n";
+        String message8 = "Choose one option :";
+        return message1 + message2 + message3 + message4 + message5 + message6 + message7 + message8;
     }
 
 

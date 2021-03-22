@@ -16,7 +16,7 @@ public class Controller {
      */
     public void initialize() {
         outputs.print(outputs.printHead());
-        while (!coffeeMaker.getStartButton().getButtonPressed()) {
+        while (!coffeeMaker.getStartButton().getButtonPressed() || !coffeeMaker.getPlateSensor().getState()) {
             outputs.print(outputs.instructions());
             entryOption(inputs.scanner());
             outputs.print("");
@@ -40,6 +40,12 @@ public class Controller {
                 loadCoffeeBeans();
                 break;
             case "4":
+                loadPotOverHeaterPlatePot();
+                break;
+            case "5":
+                removePotOverPlateHeater();
+                break;
+            case "6":
                 exit();
                 break;
             default:
@@ -49,14 +55,41 @@ public class Controller {
     }
 
     /**
+     * Remove the pot from the sensor, checking if it has already been removed
+     */
+    public void removePotOverPlateHeater() {
+        outputs.print(outputs.formatColorGreen("Selected option 5"));
+        if (!coffeeMaker.getPot().getIsInPlace()) {
+            outputs.print(outputs.formatColorYellow("The pot is not longer on the sensor plate"));
+        } else {
+            outputs.print(outputs.formatColorGreen("removing the pot ..."));
+            coffeeMaker.getPot().setIsInPlace(false);
+            outputs.print(outputs.formatColorYellow("The pot has been removed."));
+        }
+    }
+    /**
+     * Returns the pot on the sensor plate, checking if it has already been returned.
+     */
+    public void loadPotOverHeaterPlatePot() {
+        outputs.print(outputs.formatColorGreen("Selected option 4"));
+        if (!coffeeMaker.getPot().getIsInPlace()) {
+            outputs.print(outputs.formatColorGreen("Placing the pot ..."));
+            coffeeMaker.getPot().setIsInPlace(true);
+            outputs.print(outputs.formatColorGreen("The pot is ready"));
+        } else {
+            outputs.print(outputs.formatColorYellow("The pot is already in place"));
+        }
+    }
+    /**
      * Verify if there is water and coffee in the coffee maker, if there is, start the coffee process
      */
     public void initCoffeeMaker() {
         outputs.print(outputs.formatColorGreen("Selected option 1"));
         if (verifyConditionsForCoffeeMaker()) {
             coffeeMaker.getStartButton().isPressed();
+            coffeeMaker.getPlateSensor().thereIsAPot();
         } else {
-            outputs.print(outputs.formatError("There are no water or no coffee beans in the filter"));
+            outputs.print(outputs.formatError("There is no water or no coffee beans in the filter or pot"));
         }
     }
 
@@ -71,9 +104,22 @@ public class Controller {
         if (!containCoffeeBeans()) {
             state = false;
         }
+        if (!potInPlace()) {
+            state = false;
+        }
         return state;
     }
 
+    /**
+     * check if it has water
+     * @return
+     */
+    public boolean potInPlace() {
+        if (!coffeeMaker.getPot().getIsInPlace()) {
+            return false;
+        }
+        return true;
+    }
     /**
      * check if it has water
      * @return
