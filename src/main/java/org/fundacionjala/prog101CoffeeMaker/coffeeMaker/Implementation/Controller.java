@@ -16,7 +16,7 @@ public class Controller {
      */
     public void initialize() {
         outputs.print(outputs.printHead());
-        while (!coffeeMaker.getStartButton().getButtonPressed()) {
+        while (!coffeeMaker.obtainsStartButtonState()) {
             outputs.print(outputs.instructions());
             entryOption(inputs.scanner());
             outputs.print("");
