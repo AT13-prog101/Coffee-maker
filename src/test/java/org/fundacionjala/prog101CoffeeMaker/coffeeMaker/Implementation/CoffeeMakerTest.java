@@ -16,7 +16,11 @@ public class CoffeeMakerTest {
     }
 
     @Test
-    public void isBoilerWithWater() {
+    public void isBoilerWithWater_VerifyIfBoilerIsWithWater_False() {
+        CoffeeMaker coffeeMaker = new CoffeeMaker();
+        boolean expected = false;
+        boolean actual = coffeeMaker.isBoilerWithWater();
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
