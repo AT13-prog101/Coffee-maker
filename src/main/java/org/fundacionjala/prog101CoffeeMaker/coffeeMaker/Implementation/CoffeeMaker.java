@@ -28,11 +28,33 @@ public class CoffeeMaker {
     }
 
     /**
+     * Fill the boiler with cups of water
+     */
+    public void fillBoilerWithWater(final int cupsWater) {
+        boiler.setCupsOfWater(cupsWater);
+    }
+
+    /**
+     * Fill the boiler with cups of water
+     */
+    public void fillFilterWithCoffeeGrains() {
+        filterAndReceptacle.putCoffeeGrains();
+    }
+
+    /**
      * Returns true if the pot is it's place
      * @return boolean
      */
     public boolean obtainsStartButtonState() {
         return startButton.getButtonPressed();
+    }
+
+    /**
+     * Returns true if the pot is it's place
+     * @return boolean
+     */
+    public void pressStartButton() {
+        startButton.isPressed();
     }
 
     /**
