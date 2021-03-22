@@ -16,7 +16,7 @@ public class Controller {
      */
     public void initialize() {
         outputs.print(outputs.printHead());
-        while (!coffeeMaker.getStartButton().getButtonPressed() || !coffeeMaker.getPlateSensor().getState()) {
+        while (!coffeeMaker.obtainsStartButtonState()) {
             outputs.print(outputs.instructions());
             entryOption(inputs.scanner());
             outputs.print("");
@@ -59,11 +59,11 @@ public class Controller {
      */
     public void removePotOverPlateHeater() {
         outputs.print(outputs.formatColorGreen("Selected option 5"));
-        if (!coffeeMaker.getPot().getIsInPlace()) {
+        if (!coffeeMaker.isPotInPlace()) {
             outputs.print(outputs.formatColorYellow("The pot is not longer on the sensor plate"));
         } else {
-            outputs.print(outputs.formatColorGreen("removing the pot ..."));
-            coffeeMaker.getPot().setIsInPlace(false);
+            outputs.print(outputs.formatColorGreen("Removing the pot ..."));
+            coffeeMaker.changePlacePot(false);
             outputs.print(outputs.formatColorYellow("The pot has been removed."));
         }
     }
@@ -72,9 +72,9 @@ public class Controller {
      */
     public void loadPotOverHeaterPlatePot() {
         outputs.print(outputs.formatColorGreen("Selected option 4"));
-        if (!coffeeMaker.getPot().getIsInPlace()) {
+        if (!coffeeMaker.isPotInPlace()) {
             outputs.print(outputs.formatColorGreen("Placing the pot ..."));
-            coffeeMaker.getPot().setIsInPlace(true);
+            coffeeMaker.changePlacePot(true);
             outputs.print(outputs.formatColorGreen("The pot is ready"));
         } else {
             outputs.print(outputs.formatColorYellow("The pot is already in place"));
@@ -86,8 +86,7 @@ public class Controller {
     public void initCoffeeMaker() {
         outputs.print(outputs.formatColorGreen("Selected option 1"));
         if (verifyConditionsForCoffeeMaker()) {
-            coffeeMaker.getStartButton().isPressed();
-            coffeeMaker.getPlateSensor().thereIsAPot();
+            coffeeMaker.pressStartButton();
         } else {
             outputs.print(outputs.formatError("There is no water or no coffee beans in the filter or pot"));
         }
@@ -97,60 +96,17 @@ public class Controller {
      * Verifies if the conditions to start making coffee have been met
      */
     public boolean verifyConditionsForCoffeeMaker() {
-        boolean state = true;
-        if (!containLiquid()) {
-            state = false;
-        }
-        if (!containCoffeeBeans()) {
-            state = false;
-        }
-        if (!potInPlace()) {
-            state = false;
-        }
-        return state;
+        return coffeeMaker.isBoilerWithWater() && coffeeMaker.isFilterWithCoffeeBeans() && coffeeMaker.isPotOverPlateHeater();
     }
-
-    /**
-     * check if it has water
-     * @return
-     */
-    public boolean potInPlace() {
-        if (!coffeeMaker.getPot().getIsInPlace()) {
-            return false;
-        }
-        return true;
-    }
-    /**
-     * check if it has water
-     * @return
-     */
-    public boolean containLiquid() {
-        if (!coffeeMaker.getBoiler().containLiquid()) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * check if it has coffee beans in the filter
-     * @return
-     */
-    public boolean containCoffeeBeans() {
-        if (!coffeeMaker.getFilterAndReceptacle().getCoffeeGrains()) {
-            return false;
-        }
-        return true;
-    }
-
 
     /**
      * Added water in CoffeeMaker
      */
     public void loadWater(final int cupsWater) {
         outputs.print(outputs.formatColorGreen("Selected option 2"));
-        if (!containLiquid()) {
+        if (!coffeeMaker.isBoilerWithWater()) {
             outputs.print(outputs.formatColorGreen("Adding water..."));
-            coffeeMaker.getBoiler().setCupsOfWater(cupsWater);
+            coffeeMaker.fillBoilerWithWater(cupsWater);
             outputs.print(outputs.formatColorGreen("The water is ready"));
         } else {
             outputs.print(outputs.formatColorYellow("No more water can be inserted"));
@@ -162,9 +118,9 @@ public class Controller {
      */
     public void loadCoffeeBeans() {
         outputs.print(outputs.formatColorGreen("Selected option 3"));
-        if (!containCoffeeBeans()) {
+        if (!coffeeMaker.isFilterWithCoffeeBeans()) {
             outputs.print(outputs.formatColorGreen("Adding coffee to the coffee filter..."));
-            coffeeMaker.getFilterAndReceptacle().putCoffeeGrains();
+            coffeeMaker.fillFilterWithCoffeeGrains();
             outputs.print(outputs.formatColorGreen("The coffee is ready"));
         } else {
             outputs.print(outputs.formatColorYellow("No more coffee can be inserted"));

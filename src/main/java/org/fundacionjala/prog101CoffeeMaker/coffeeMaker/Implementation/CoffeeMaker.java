@@ -28,6 +28,74 @@ public class CoffeeMaker {
     }
 
     /**
+     * Fills the boiler with cups of water
+     */
+    public void fillBoilerWithWater(final int cupsWater) {
+        boiler.setCupsOfWater(cupsWater);
+    }
+
+    /**
+     * Fills the filter with coffee grains
+     */
+    public void fillFilterWithCoffeeGrains() {
+        filterAndReceptacle.putCoffeeGrains();
+    }
+
+    /**
+     * Returns the state of the startButton
+     * @return boolean
+     */
+    public boolean obtainsStartButtonState() {
+        return startButton.getButtonPressed();
+    }
+
+    /**
+     * Changes the state of the startButton
+     */
+    public void pressStartButton() {
+        startButton.pressed();
+    }
+
+    /**
+     * Returns true if the pot is it's place
+     * @return boolean
+     */
+    public boolean isPotInPlace() {
+        return pot.getIsInPlace();
+    }
+
+    /**
+     * Changes the state isInPlace variable of the pot
+     */
+    public void changePlacePot(final boolean newPlace) {
+        pot.setIsInPlace(newPlace);
+    }
+
+    /**
+     * Returns true if the filter contains coffee grains
+     * @return boolean
+     */
+    public boolean isFilterWithCoffeeBeans() {
+        return filterAndReceptacle.getCoffeeGrains();
+    }
+
+    /**
+     * Returns true if the boiler contains water
+     * @return boolean
+     */
+    public boolean isBoilerWithWater() {
+        return boiler.containLiquid();
+    }
+
+    /**
+     * Returns true if the pot is on the sensor plate
+     * @return boolean
+     */
+    public boolean isPotOverPlateHeater() {
+        return pot.getIsInPlace();
+    }
+
+    /**
      * Gets the boiler
      * @return Boiler
      */
@@ -77,7 +145,7 @@ public class CoffeeMaker {
 
     /**
      * Gets the delivery pipe.
-     * @return
+     * @return DeliveryPipe state
      */
     public DeliveryPipe getDeliveryPipe() {
         return deliveryPipe;

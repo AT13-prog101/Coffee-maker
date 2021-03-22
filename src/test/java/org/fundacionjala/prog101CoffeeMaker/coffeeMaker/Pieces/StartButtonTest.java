@@ -10,7 +10,7 @@ public class StartButtonTest {
     public void isPressed_True() {
         StartButton button = new StartButton();
         boolean expected = true;
-        button.isPressed();
+        button.pressed();
         boolean actual = button.getButtonPressed();
         assertEquals(expected, actual);
     }
