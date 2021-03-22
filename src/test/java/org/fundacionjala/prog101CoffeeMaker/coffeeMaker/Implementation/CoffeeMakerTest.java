@@ -32,11 +32,15 @@ public class CoffeeMakerTest {
     }
 
     @Test
-    public void getBoiler() {
+    public void isPotInPlace_VerifyIfPotIsInPlace_False() {
+        CoffeeMaker coffeeMaker = new CoffeeMaker();
+        boolean expected = false;
+        boolean actual = coffeeMaker.isPotInPlace();
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void getPlateSensor() {
+    public void putPotInNewPlace() {
     }
 
     @Test
