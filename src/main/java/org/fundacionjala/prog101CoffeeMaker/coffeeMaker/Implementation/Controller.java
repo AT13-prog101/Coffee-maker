@@ -29,35 +29,35 @@ public class Controller {
      */
     public void entryOption(final String option) {
         final int cupsWater = 12;
-            switch (option) {
-                case "1":
-                    initCoffeeMaker();
-                    break;
-                case "2":
-                    loadWater(cupsWater);
-                    break;
-                case "3":
-                    loadCoffeeBeans();
-                    break;
-                case "4":
-                    loadPotOverHeater();
-                    break;
-                case "5":
-                    removePotOverHeater();
-                    break;
-                case "6":
-                    exit();
-                    break;
-                default:
-                    outputs.print(outputs.formatError("Option not available, choose one of the given above"));
-                    break;
-            }
+        switch (option) {
+            case "1":
+                initCoffeeMaker();
+                break;
+            case "2":
+                loadWater(cupsWater);
+                break;
+            case "3":
+                loadCoffeeBeans();
+                break;
+            case "4":
+                loadPotOverHeaterPlatePot();
+                break;
+            case "5":
+                removePotOverPlateHeater();
+                break;
+            case "6":
+                exit();
+                break;
+            default:
+                outputs.print(outputs.formatError("Option not available, choose one of the given above"));
+                break;
+        }
     }
 
     /**
-     * remove the pot of the sensor plate
+     * Remove the pot from the sensor, checking if it has already been removed
      */
-    public void removePotOverHeater() {
+    public void removePotOverPlateHeater() {
         outputs.print(outputs.formatColorGreen("Selected option 5"));
         if (!coffeeMaker.getPot().getIsInPlace()) {
             outputs.print(outputs.formatColorYellow("The pot is not longer on the sensor plate"));
@@ -68,9 +68,9 @@ public class Controller {
         }
     }
     /**
-     * Load the pot on the sensor plate
+     * Returns the pot on the sensor plate, checking if it has already been returned.
      */
-    public void loadPotOverHeater() {
+    public void loadPotOverHeaterPlatePot() {
         outputs.print(outputs.formatColorGreen("Selected option 4"));
         if (!coffeeMaker.getPot().getIsInPlace()) {
             outputs.print(outputs.formatColorGreen("Placing the pot ..."));
@@ -89,7 +89,7 @@ public class Controller {
             coffeeMaker.getStartButton().isPressed();
             coffeeMaker.getPlateSensor().thereIsAPot();
         } else {
-            outputs.print(outputs.formatError("There are no water or no coffee beans in the filter or pot"));
+            outputs.print(outputs.formatError("There is no water or no coffee beans in the filter or pot"));
         }
     }
 
