@@ -61,14 +61,21 @@ public class CoffeeMaker {
      * @return boolean
      */
     public boolean isPotInPlace() {
-        return pot.getIsInPlace();
+        return plateSensor.getState();
     }
 
     /**
-     * Changes the state isInPlace variable of the pot
+     * Removes the pot from the plateSensor
      */
-    public void changePlacePot(final boolean newPlace) {
-        pot.setIsInPlace(newPlace);
+    public void removePot() {
+        plateSensor.setState(false);
+    }
+
+    /**
+     * Return the pot to it's place on the plateSensor
+     */
+    public void returnPotToPlateHeater() {
+        plateSensor.setState(true);
     }
 
     /**
@@ -111,11 +118,11 @@ public class CoffeeMaker {
     }
 
     /**
-     * Returns true if the pot is on the sensor plate
+     * Returns true if the pot is on the plateSensor
      * @return boolean
      */
     public boolean isPotOverPlateHeater() {
-        return pot.getIsInPlace();
+        return plateSensor.getState();
     }
 
     /**

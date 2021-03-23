@@ -17,18 +17,20 @@ public class PotTest {
     @Test
     public void getIsInPlace_IsInPlace() {
         Pot pot = new Pot();
+        PlateSensor plateSensor = new PlateSensor();
         boolean expected = false;
-        boolean actual = pot.getIsInPlace();
+        boolean actual = plateSensor.getState();
         assertEquals(expected, actual);
     }
 
     @Test
     public void setIsInPlace_NewStateTrue_True() {
         Pot pot = new Pot();
+        PlateSensor plateSensor = new PlateSensor();
         boolean newState = true;
         boolean expected = true;
-        pot.setIsInPlace(newState);
-        boolean actual = pot.getIsInPlace();
+        plateSensor.setState(newState);
+        boolean actual = plateSensor.getState();
         assertEquals(expected, actual);
     }
 
