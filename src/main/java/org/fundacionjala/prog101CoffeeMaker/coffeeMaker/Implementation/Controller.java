@@ -105,7 +105,13 @@ public class Controller {
     public void removePotOverPlateHeater() {
         boolean remove = false;
         outputs.print(outputs.formatColorGreen("Selected option 5"));
-        movingPot(remove);
+        if (!coffeeMaker.isPotInPlace()) {
+            outputs.print(outputs.formatColorYellow("The pot is not longer on the sensor plate"));
+        } else {
+            outputs.print(outputs.formatColorGreen("Removing the pot ..."));
+            coffeeMaker.removePot();
+            outputs.print(outputs.formatColorYellow("The pot has been removed."));
+        } 
     }
     /**
      * Returns the pot on the sensor plate, checking if it has already been returned.
@@ -113,7 +119,13 @@ public class Controller {
     public void loadPotOverHeaterPlatePot() {
         boolean load = true;
         outputs.print(outputs.formatColorGreen("Selected option 4"));
-        movingPot(load);
+        if (!coffeeMaker.isPotInPlace()) {
+            outputs.print(outputs.formatColorGreen("Placing the pot ..."));
+            coffeeMaker.returnPot();
+            outputs.print(outputs.formatColorGreen("The pot is ready"));
+        } else {
+            outputs.print(outputs.formatColorYellow("The pot is already in place"));
+        }
     }
     /**
      * Verify if there is water and coffee in the coffee maker, if there is, start the coffee process
@@ -123,7 +135,15 @@ public class Controller {
         if (verifyConditionsForCoffeeMaker()) {
             coffeeMaker.pressStartButton();
         } else {
-            outputs.print(outputs.formatError("There is no water or no coffee beans in the filter or pot"));
+            if (!coffeeMaker.isBoilerWithWater()) {
+                outputs.print(outputs.formatError("There is no water on the boiler"));
+            }
+            if (!coffeeMaker.isFilterWithCoffeeBeans()) {
+                outputs.print(outputs.formatError("There is no coffee benas on the filter"));
+            }
+            if (!coffeeMaker.isPotOverPlateHeater()) {
+                outputs.print(outputs.formatError("There is no pot on the sensor plate"));
+            }
         }
     }
 
