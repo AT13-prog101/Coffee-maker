@@ -74,7 +74,7 @@ public class CoffeeMaker {
     /**
      * Return the pot to it's place on the plateSensor
      */
-    public void returnPot() {
+    public void returnPotToPlateHeater() {
         plateSensor.setState(true);
     }
 
