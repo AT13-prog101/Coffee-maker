@@ -40,10 +40,9 @@ public class CoffeeMakerTest {
     }
 
     @Test
-    public void putPotInNewPlace_RemovingThePotOfPlateHeate_True() {
-        boolean newState = true;
+    public void putPotInNewPlace_PutThePotOfPlateHeate_True() {
         CoffeeMaker coffeeMaker = new CoffeeMaker();
-        coffeeMaker.changePlacePot(newState);
+        coffeeMaker.returnPotToPlateHeater();
         boolean expected = true;
         boolean actual = coffeeMaker.isPotInPlace();
         Assert.assertEquals(expected, actual);
@@ -51,9 +50,8 @@ public class CoffeeMakerTest {
 
     @Test
     public void putPotInNewPlace_RemovingThePotOfPlateHeate_False() {
-        boolean newState = false;
         CoffeeMaker coffeeMaker = new CoffeeMaker();
-        coffeeMaker.changePlacePot(newState);
+        coffeeMaker.removePot();
         boolean expected = false;
         boolean actual = coffeeMaker.isPotInPlace();
         Assert.assertEquals(expected, actual);
