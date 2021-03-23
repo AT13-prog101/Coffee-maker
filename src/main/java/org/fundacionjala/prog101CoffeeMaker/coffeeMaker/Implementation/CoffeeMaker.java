@@ -79,7 +79,19 @@ public class CoffeeMaker {
     public void makingCoffee() {
         boiler.restOneCup();
         pot.plusOneCup();
-        System.out.println(boiler.getCupsOfWater() + " " + pot.getAmountOfCups());
+        System.out.println("Ready " + pot.getAmountOfCups() + " cup(s) of coffee");
+    }
+
+    /**
+     * drink only one cup of coffee
+     */
+    public boolean drinkOneCupCoffee() {
+        pot.restOneCup();
+        System.out.println("Drink Coffee...!!! - Remain " + pot.getAmountOfCups() + " cup(s) of coffee");
+        if (pot.getAmountOfCups() > 0) {
+            return true;
+        }
+        return false;
     }
 
     /**

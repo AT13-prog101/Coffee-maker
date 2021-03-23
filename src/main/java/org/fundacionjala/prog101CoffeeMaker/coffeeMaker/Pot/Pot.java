@@ -55,4 +55,11 @@ public class Pot implements Container {
     public void plusOneCup() {
         this.amountOfCups++;
     }
+
+    /**
+     * Plus one cup of coffee
+     */
+    public void restOneCup() {
+        this.amountOfCups--;
+    }
 }

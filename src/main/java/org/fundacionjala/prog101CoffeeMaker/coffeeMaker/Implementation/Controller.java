@@ -1,9 +1,23 @@
 package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Implementation;
+import java.util.TimerTask;
+import java.util.Timer;
 
 public class Controller {
     private CoffeeMaker coffeeMaker;
     private Inputs inputs;
     private Outputs outputs;
+    private Timer timer;
+    private final int velocityCoffeeMaker = 100;
+    private final int delayOfCycleInMilliSeconds = 10;
+    private final int numberHundred = 100;
+    private int tic;
+
+    private final int intermittencePlateHeater = 14;
+    private int counterPlateHeater = 0;
+    private boolean messageFinal = true;
+    private boolean switchPlateHeater = true;
+
+    private final int intermittenceDrinkCoffee = 14;
 
     public Controller() {
         coffeeMaker = new CoffeeMaker();
@@ -23,15 +37,54 @@ public class Controller {
         }
         outputs.print(outputs.formatColorGreen("Starting coffee..."));
         coffeeMaker.getBoiler().on();
-        while (verifyConditionsForCoffeeMaker()) {
-            if (coffeeMaker.isPotOverPlateHeater()) {
-                coffeeMaker.makingCoffee();
-            } else {
-                outputs.print("pause...");
-            }
-        }
-        System.out.println("fin");
+        timer = new Timer();
+        startCoffeeMaker();
     }
+
+    /**
+     * make coffee each time
+     */
+    public void startCoffeeMaker() {
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                if (tic % velocityCoffeeMaker == 0) {
+                    if (verifyConditionsForCoffeeMaker()) {
+                        if (coffeeMaker.isPotOverPlateHeater()) {
+                            coffeeMaker.makingCoffee();
+                        } else {
+                            outputs.print("pause...");
+                        }
+                    } else {
+                        if (messageFinal) {
+                            outputs.print(outputs.formatColorGreen("The coffee is ready...!!!"));
+                            messageFinal = false;
+                        }
+                    }
+                    counterPlateHeater++;
+                    if (counterPlateHeater == intermittencePlateHeater) {
+                        if (switchPlateHeater) {
+                            outputs.print(outputs.formatColorGreen("PlateHeater is on"));
+                            switchPlateHeater = false;
+                        } else {
+                            outputs.print(outputs.formatColorGreen("PlateHeater is off"));
+                            switchPlateHeater = true;
+                            if (!coffeeMaker.drinkOneCupCoffee()) {
+                                outputs.print(outputs.formatColorGreen("CoffeeMaker is finish"));
+                                exit();
+                            }
+                        }
+                        counterPlateHeater = 0;
+                    }
+                    tic /= numberHundred;
+                }
+
+                tic += 1;
+            }
+        };
+        timer.scheduleAtFixedRate(task, 0, delayOfCycleInMilliSeconds);
+    }
+
     /**
      * Selected any option available
      * @param option
