@@ -34,6 +34,8 @@ public class BoilerTest {
     @Test
     public void on_HeaterOn_True() {
         Boiler boiler = new Boiler();
+        final int waterCups = 12;
+        boiler.setCupsOfWater(waterCups);
         boiler.on();
         boolean expected = true;
         boolean actual = boiler.getWorkingBoiler();

@@ -28,21 +28,21 @@ public class CoffeeMaker {
     }
 
     /**
-     * Fill the boiler with cups of water
+     * Fills the boiler with cups of water
      */
     public void fillBoilerWithWater(final int cupsWater) {
         boiler.setCupsOfWater(cupsWater);
     }
 
     /**
-     * Fill the boiler with cups of water
+     * Fills the filter with coffee grains
      */
     public void fillFilterWithCoffeeGrains() {
         filterAndReceptacle.putCoffeeGrains();
     }
 
     /**
-     * Returns true if the pot is it's place
+     * Returns the state of the startButton
      * @return boolean
      */
     public boolean obtainsStartButtonState() {
@@ -50,11 +50,10 @@ public class CoffeeMaker {
     }
 
     /**
-     * Returns true if the pot is it's place
-     * @return boolean
+     * Changes the state of the startButton
      */
     public void pressStartButton() {
-        startButton.isPressed();
+        startButton.pressed();
     }
 
     /**
@@ -66,15 +65,26 @@ public class CoffeeMaker {
     }
 
     /**
-     * Sets the new place of the pot
+     * Changes the state isInPlace variable of the pot
      */
-    public void putPotInNewPlace(final boolean newPlace) {
+    public void changePlacePot(final boolean newPlace) {
         pot.setIsInPlace(newPlace);
     }
 
     /**
      * Returns true if the filter contains coffee grains
      * @return boolean
+     * making coffee
+     */
+    public void makingCoffee() {
+        boiler.restOneCup();
+        pot.plusOneCup();
+        System.out.println(boiler.getCupsOfWater() + " " + pot.getAmountOfCups());
+    }
+
+    /**
+     * A
+     * @return
      */
     public boolean isFilterWithCoffeeBeans() {
         return filterAndReceptacle.getCoffeeGrains();

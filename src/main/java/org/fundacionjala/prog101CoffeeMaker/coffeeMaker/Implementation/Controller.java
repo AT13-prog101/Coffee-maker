@@ -22,6 +22,15 @@ public class Controller {
             outputs.print("");
         }
         outputs.print(outputs.formatColorGreen("Starting coffee..."));
+        coffeeMaker.getBoiler().on();
+        while (verifyConditionsForCoffeeMaker()) {
+            if (coffeeMaker.isPotOverPlateHeater()) {
+                coffeeMaker.makingCoffee();
+            } else {
+                outputs.print("pause...");
+            }
+        }
+        System.out.println("fin");
     }
     /**
      * Selected any option available
@@ -63,7 +72,7 @@ public class Controller {
             outputs.print(outputs.formatColorYellow("The pot is not longer on the sensor plate"));
         } else {
             outputs.print(outputs.formatColorGreen("Removing the pot ..."));
-            coffeeMaker.putPotInNewPlace(false);
+            coffeeMaker.changePlacePot(false);
             outputs.print(outputs.formatColorYellow("The pot has been removed."));
         }
     }
@@ -74,7 +83,7 @@ public class Controller {
         outputs.print(outputs.formatColorGreen("Selected option 4"));
         if (!coffeeMaker.isPotInPlace()) {
             outputs.print(outputs.formatColorGreen("Placing the pot ..."));
-            coffeeMaker.putPotInNewPlace(true);
+            coffeeMaker.changePlacePot(true);
             outputs.print(outputs.formatColorGreen("The pot is ready"));
         } else {
             outputs.print(outputs.formatColorYellow("The pot is already in place"));
@@ -96,7 +105,10 @@ public class Controller {
      * Verifies if the conditions to start making coffee have been met
      */
     public boolean verifyConditionsForCoffeeMaker() {
-        return coffeeMaker.isBoilerWithWater() && coffeeMaker.isFilterWithCoffeeBeans() && coffeeMaker.isPotOverPlateHeater();
+        boolean hasWater = coffeeMaker.isBoilerWithWater();
+        boolean hasCoffeeBeans = coffeeMaker.isFilterWithCoffeeBeans();
+        boolean hasPot = coffeeMaker.isPotOverPlateHeater();
+        return  hasWater && hasCoffeeBeans && hasPot;
     }
 
     /**
