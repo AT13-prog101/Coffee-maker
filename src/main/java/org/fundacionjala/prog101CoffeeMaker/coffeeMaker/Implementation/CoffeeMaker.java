@@ -74,6 +74,17 @@ public class CoffeeMaker {
     /**
      * Returns true if the filter contains coffee grains
      * @return boolean
+     * making coffee
+     */
+    public void makingCoffee() {
+        boiler.restOneCup();
+        pot.plusOneCup();
+        System.out.println(boiler.getCupsOfWater() + " " + pot.getAmountOfCups());
+    }
+
+    /**
+     * A
+     * @return
      */
     public boolean isFilterWithCoffeeBeans() {
         return filterAndReceptacle.getCoffeeGrains();

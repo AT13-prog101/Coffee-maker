@@ -21,7 +21,7 @@ public class Boiler implements Container, Heater {
      */
     @Override
     public boolean containLiquid() {
-        if (cupsOfWater > 0) {
+        if (waterSensor.getState()) {
             return true;
         }
         return false;
@@ -31,8 +31,13 @@ public class Boiler implements Container, Heater {
      * Changes workingBoiler to true.
      */
     @Override
-    public void on() {
-        workingBoiler = true;
+    public boolean on() {
+        if (waterSensor.getState()) {
+            pressureRelietValve.close();
+            workingBoiler = true;
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -40,7 +45,18 @@ public class Boiler implements Container, Heater {
      */
     @Override
     public void off() {
+        pressureRelietValve.open();
         workingBoiler = false;
+    }
+
+    /**
+     *
+     */
+    public void restOneCup() {
+        this.cupsOfWater--;
+        if (this.cupsOfWater == 0) {
+            waterSensor.thereIsNoWaterInBoiler();
+        }
     }
 
     /**
@@ -57,6 +73,7 @@ public class Boiler implements Container, Heater {
      */
     public void setCupsOfWater(final int newCupsOfWater) {
         this.cupsOfWater = newCupsOfWater;
+        waterSensor.thereIsWaterInBoiler();
     }
 
     /**
