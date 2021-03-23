@@ -64,30 +64,56 @@ public class Controller {
     }
 
     /**
+     * Method for remove or load the pot
+     */
+    public void movingPot(final boolean wantPutPot) {
+        boolean remove = false;
+        boolean load = true;
+        if (coffeeMaker.isPotInPlace() && !wantPutPot) {
+            changeStatePot(remove, "Removing the pot ...", "The pot has been removed.");
+        } else {
+            if (!coffeeMaker.isPotInPlace() && wantPutPot) {
+                changeStatePot(load, "Placing the pot ...", "The pot is ready");
+            } else {
+                outputs.print(outputs.formatColorGreen(statePot()));
+            }
+        }
+    }
+
+    /**
+     * Change the state pot for removing or load
+     */
+    public void changeStatePot(final boolean statePot, final String action, final String ready) {
+        outputs.print(outputs.formatColorGreen(action));
+        coffeeMaker.changePlacePot(statePot);
+        outputs.print(outputs.formatColorGreen(ready));
+    }
+
+    /**
+     * return messages if the pot is already in place or The pot is not longer on the sensor plate
+     * @return boolean
+     */
+    public String statePot() {
+        if (coffeeMaker.isPotInPlace()) {
+            return "The pot is already in place";
+        }
+        return "The pot is not longer on the sensor plate";
+    }
+    /**
      * Remove the pot from the sensor, checking if it has already been removed
      */
     public void removePotOverPlateHeater() {
+        boolean remove = false;
         outputs.print(outputs.formatColorGreen("Selected option 5"));
-        if (!coffeeMaker.isPotInPlace()) {
-            outputs.print(outputs.formatColorYellow("The pot is not longer on the sensor plate"));
-        } else {
-            outputs.print(outputs.formatColorGreen("Removing the pot ..."));
-            coffeeMaker.changePlacePot(false);
-            outputs.print(outputs.formatColorYellow("The pot has been removed."));
-        }
+        movingPot(remove);
     }
     /**
      * Returns the pot on the sensor plate, checking if it has already been returned.
      */
     public void loadPotOverHeaterPlatePot() {
+        boolean load = true;
         outputs.print(outputs.formatColorGreen("Selected option 4"));
-        if (!coffeeMaker.isPotInPlace()) {
-            outputs.print(outputs.formatColorGreen("Placing the pot ..."));
-            coffeeMaker.changePlacePot(true);
-            outputs.print(outputs.formatColorGreen("The pot is ready"));
-        } else {
-            outputs.print(outputs.formatColorYellow("The pot is already in place"));
-        }
+        movingPot(load);
     }
     /**
      * Verify if there is water and coffee in the coffee maker, if there is, start the coffee process
