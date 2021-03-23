@@ -72,7 +72,7 @@ public class Controller {
             outputs.print(outputs.formatColorYellow("The pot is not longer on the sensor plate"));
         } else {
             outputs.print(outputs.formatColorGreen("Removing the pot ..."));
-            coffeeMaker.changePlacePot(false);
+            coffeeMaker.removePot();
             outputs.print(outputs.formatColorYellow("The pot has been removed."));
         }
     }
@@ -83,7 +83,7 @@ public class Controller {
         outputs.print(outputs.formatColorGreen("Selected option 4"));
         if (!coffeeMaker.isPotInPlace()) {
             outputs.print(outputs.formatColorGreen("Placing the pot ..."));
-            coffeeMaker.changePlacePot(true);
+            coffeeMaker.returnPot();
             outputs.print(outputs.formatColorGreen("The pot is ready"));
         } else {
             outputs.print(outputs.formatColorYellow("The pot is already in place"));
@@ -97,7 +97,15 @@ public class Controller {
         if (verifyConditionsForCoffeeMaker()) {
             coffeeMaker.pressStartButton();
         } else {
-            outputs.print(outputs.formatError("There is no water or no coffee beans in the filter or pot"));
+            if (!coffeeMaker.isBoilerWithWater()) {
+                outputs.print(outputs.formatError("There is no water on the boiler"));
+            }
+            if (!coffeeMaker.isFilterWithCoffeeBeans()) {
+                outputs.print(outputs.formatError("There is no coffee benas on the filter"));
+            }
+            if (!coffeeMaker.isPotOverPlateHeater()) {
+                outputs.print(outputs.formatError("There is no pot on the sensor plate"));
+            }
         }
     }
 
