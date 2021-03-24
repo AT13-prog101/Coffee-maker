@@ -119,26 +119,18 @@ public class Controller {
     /**
      * Method for remove or load the pot
      */
-    public void movingPot(final boolean wantPutPot) {
+    public void movePot(final boolean wantPutPot) {
         if (coffeeMaker.isPotInPlace() && !wantPutPot) {
-            actionPot("Removing the pot ...", "The pot has been removed.");
+            outputs.print(outputs.formatColorGreen("Removing the pot ...\nThe pot has been removed."));
             coffeeMaker.removePot();
         } else {
             if (!coffeeMaker.isPotInPlace() && wantPutPot) {
-                actionPot("Placing the pot ...", "The pot is ready");
+                outputs.print(outputs.formatColorGreen("Placing the pot ...\nThe pot is ready"));
                 coffeeMaker.returnPotToPlateHeater();
             } else {
                 outputs.print(outputs.formatColorGreen(sendMessageStatePot()));
             }
         }
-    }
-
-    /**
-     * messages for the action of the pot
-     */
-    public void actionPot(final String action, final String ready) {
-        outputs.print(outputs.formatColorGreen(action));
-        outputs.print(outputs.formatColorGreen(ready));
     }
 
     /**
@@ -157,7 +149,7 @@ public class Controller {
     public void removePotOverPlateHeater() {
         boolean remove = false;
         outputs.print(outputs.formatColorGreen("Selected option 5"));
-        movingPot(remove);
+        movePot(remove);
     }
     /**
      * Returns the pot on the sensor plate, checking if it has already been returned.
@@ -165,7 +157,7 @@ public class Controller {
     public void loadPotOverHeaterPlatePot() {
         boolean load = true;
         outputs.print(outputs.formatColorGreen("Selected option 4"));
-        movingPot(load);
+        movePot(load);
     }
     /**
      * Verify if there is water and coffee in the coffee maker, if there is, start the coffee process

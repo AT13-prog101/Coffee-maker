@@ -28,7 +28,7 @@ public class Boiler implements Container, Heater {
     }
 
     /**
-     * Changes workingBoiler to true.
+     * Changes workingBoiler to true and the state pressure Reliet Valve to close.
      */
     @Override
     public boolean on() {
@@ -41,7 +41,7 @@ public class Boiler implements Container, Heater {
     }
 
     /**
-     * Changes workingBoiler to false.
+     * Changes workingBoiler to false and pressure relieet valve open.
      */
     @Override
     public void off() {
@@ -50,7 +50,7 @@ public class Boiler implements Container, Heater {
     }
 
     /**
-     *
+     * remove one coup of cafe
      */
     public void restOneCup() {
         this.cupsOfWater--;
