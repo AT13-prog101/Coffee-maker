@@ -28,19 +28,39 @@ public class CoffeeMaker {
     }
 
     /**
-     * Fills the boiler with cups of water
+     * Init boiler
+     * @return
      */
-    public void fillBoilerWithWater(final int cupsWater) {
-        boiler.setCupsOfWater(cupsWater);
+    public void boilerOn(final Outputs outputs) {
+        outputs.print(outputs.formatColorYellow("Boiler is on"));
+        boiler.on();
     }
-
     /**
-     * Fills the filter with coffee grains
+     * Off boiler
+     * @return
      */
-    public void fillFilterWithCoffeeGrains() {
-        filterAndReceptacle.putCoffeeGrains();
+    public void boilerOff(final Outputs outputs) {
+        outputs.print(outputs.formatColorYellow("Boiler is off"));
+        boiler.off();
     }
-
+    /**
+     * Init Plate pot
+     * @return
+     */
+    public void potPlateOn(final Outputs outputs) {
+        outputs.print(outputs.formatColorGreen("PlateHeater and light pot is on"));
+        indicatorLight.turnOn();
+        pot.on();
+    }
+    /**
+     * Off Plate pot
+     * @return
+     */
+    public void potPlateOff(final Outputs outputs) {
+        outputs.print(outputs.formatColorYellow("PlateHeater and light pot is off"));
+        indicatorLight.turnOff();
+        pot.off();
+    }
     /**
      * Returns the state of the startButton
      * @return boolean
@@ -48,34 +68,30 @@ public class CoffeeMaker {
     public boolean obtainsStartButtonState() {
         return startButton.getButtonPressed();
     }
-
     /**
-     * Changes the state of the startButton
+     * Return the pot to it's place on the plateSensor
      */
-    public void pressStartButton() {
-        startButton.pressed();
-    }
-
-    /**
-     * Returns true if the pot is it's place
-     * @return boolean
-     */
-    public boolean isPotInPlace() {
-        return plateSensor.getState();
-    }
-
-    /**
-     * Removes the pot from the plateSensor
-     */
-    public void removePot() {
-        plateSensor.setState(false);
+    public void returnPotToPlateHeater(final Outputs outputs) {
+        if (plateSensor.checkState(pot) == 2) {
+            outputs.print(outputs.formatColorGreen("Placing the pot ..."));
+            plateSensor.thereIsAPot();
+            outputs.print(outputs.formatColorGreen("The pot is ready"));
+        } else {
+            outputs.print(outputs.formatColorYellow("The pot is already in place"));
+        }
     }
 
     /**
      * Return the pot to it's place on the plateSensor
      */
-    public void returnPotToPlateHeater() {
-        plateSensor.setState(true);
+    public void removePotToPlateHeater(final Outputs outputs) {
+        if (plateSensor.checkState(pot) == 0 || plateSensor.checkState(pot) == 1) {
+            outputs.print(outputs.formatColorGreen("Removing the pot ..."));
+            plateSensor.thereIsNoPot();
+            outputs.print(outputs.formatColorGreen("The pot is removed"));
+        } else {
+            outputs.print(outputs.formatColorYellow("The pot is not longer on the sensor plate"));
+        }
     }
 
     /**
@@ -83,10 +99,76 @@ public class CoffeeMaker {
      * @return boolean
      * making coffee
      */
-    public void makingCoffee() {
+    public void makingCoffee(final Outputs outputs) {
         boiler.restOneCup();
         pot.plusOneCup();
-        System.out.println(boiler.getCupsOfWater() + " " + pot.getAmountOfCups());
+        outputs.print("Ready " + pot.getAmountOfCups() + " cup(s) of coffee");
+    }
+
+    /**
+     * drink only one cup of coffee
+     */
+    public boolean drinkOneCupCoffee(final Outputs outputs) {
+        pot.restOneCup();
+        outputs.print("Drink Coffee...!!! - Remain " + pot.getAmountOfCups() + " cup(s) of coffee");
+        if (pot.getAmountOfCups() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Added water in CoffeeMaker
+     */
+    public void loadWater(final Outputs outputs, final int cupsWater) {
+        if (!isBoilerWithWater()) {
+            outputs.print(outputs.formatColorGreen("Adding water..."));
+            fillBoilerWithWater(cupsWater);
+            outputs.print(outputs.formatColorGreen("The water is ready"));
+        } else {
+            outputs.print(outputs.formatColorYellow("No more water can be inserted"));
+        }
+    }
+
+    /**
+     * Added coffee in CoffeeMaker
+     */
+    public void loadCoffeeBeans(final Outputs outputs) {
+        if (!isFilterWithCoffeeBeans()) {
+            outputs.print(outputs.formatColorGreen("Adding coffee to the coffee filter..."));
+            fillFilterWithCoffeeGrains();
+            outputs.print(outputs.formatColorGreen("The coffee is ready"));
+        } else {
+            outputs.print(outputs.formatColorYellow("No more coffee can be inserted"));
+        }
+    }
+
+    /**
+     * Verify if there is water and coffee in the coffee maker, if there is, start the coffee process
+     */
+    public void initCoffeeMaker(final Outputs outputs) {
+        if (verifyConditionsForCoffeeMaker()) {
+            pressStartButton();
+        } else {
+            if (!isBoilerWithWater()) {
+                outputs.print(outputs.formatError("There is no water on the boiler"));
+            }
+            if (!isFilterWithCoffeeBeans()) {
+                outputs.print(outputs.formatError("There is no coffee benas on the filter"));
+            }
+            if (!(checkPlacePot() == 0 || checkPlacePot() == 1)) {
+                outputs.print(outputs.formatError("There is no pot on the sensor plate"));
+            }
+        }
+    }
+    /**
+     * Verifies if the conditions to start making coffee have been met
+     */
+    public boolean verifyConditionsForCoffeeMaker() {
+        boolean hasWater = isBoilerWithWater();
+        boolean hasCoffeeBeans = isFilterWithCoffeeBeans();
+        boolean hasPot = checkPlacePot() == 0 || checkPlacePot() == 1;
+        return  hasWater && hasCoffeeBeans && hasPot;
     }
 
     /**
@@ -106,43 +188,11 @@ public class CoffeeMaker {
     }
 
     /**
-     * Returns true if the pot is on the plateSensor
-     * @return boolean
-     */
-    public boolean isPotOverPlateHeater() {
-        return plateSensor.getState();
-    }
-
-    /**
      * Gets the boiler
      * @return Boiler
      */
     public Boiler getBoiler() {
         return boiler;
-    }
-
-    /**
-     * Gets the plate sensor
-     * @return PlateSensor
-     */
-    public PlateSensor getPlateSensor() {
-        return plateSensor;
-    }
-
-    /**
-     * Gets the start button
-     * @return StartButton
-     */
-    public StartButton getStartButton() {
-        return startButton;
-    }
-
-    /**
-     * Gets the indicator light
-     * @return IndicatorLight
-     */
-    public IndicatorLight getIndicatorLight() {
-        return indicatorLight;
     }
 
     /**
@@ -154,18 +204,41 @@ public class CoffeeMaker {
     }
 
     /**
-     * Gets the pot
-     * @return Pot
+     * Fills the boiler with cups of water
      */
-    public Pot getPot() {
-        return pot;
+    public void fillBoilerWithWater(final int cupsWater) {
+        boiler.setCupsOfWater(cupsWater);
     }
 
     /**
-     * Gets the delivery pipe.
-     * @return DeliveryPipe state
+     * Fills the filter with coffee grains
      */
-    public DeliveryPipe getDeliveryPipe() {
-        return deliveryPipe;
+    public void fillFilterWithCoffeeGrains() {
+        filterAndReceptacle.putCoffeeGrains();
     }
+
+
+
+    /**
+     * Changes the state of the startButton
+     */
+    public void pressStartButton() {
+        startButton.pressed();
+    }
+
+    /**
+     * Returns true if the pot is it's place
+     * @return boolean
+     */
+    public int checkPlacePot() {
+        return plateSensor.checkState(pot);
+    }
+
+    /**
+     * Removes the pot from the plateSensor
+     */
+    public void removePot() {
+        plateSensor.setState(false);
+    }
+
 }

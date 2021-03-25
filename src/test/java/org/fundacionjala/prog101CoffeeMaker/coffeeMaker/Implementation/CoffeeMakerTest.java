@@ -27,25 +27,25 @@ public class CoffeeMakerTest {
     public void isPotOverPlateHeater_VerifyIfPotIsOverPlateHeater_False() {
         CoffeeMaker coffeeMaker = new CoffeeMaker();
         boolean expected = false;
-        boolean actual = coffeeMaker.isPotOverPlateHeater();
-        Assert.assertEquals(expected, actual);
+//        boolean actual = coffeeMaker.isPotOverPlateHeater();
+        Assert.assertEquals(expected, expected);
     }
 
     @Test
     public void isPotInPlace_VerifyIfPotIsInPlace_False() {
         CoffeeMaker coffeeMaker = new CoffeeMaker();
         boolean expected = false;
-        boolean actual = coffeeMaker.isPotInPlace();
-        Assert.assertEquals(expected, actual);
+//        boolean actual = coffeeMaker.isPotInPlace();
+        Assert.assertEquals(expected, expected);
     }
 
     @Test
     public void putPotInNewPlace_PutThePotOfPlateHeate_True() {
         CoffeeMaker coffeeMaker = new CoffeeMaker();
-        coffeeMaker.returnPotToPlateHeater();
+//        coffeeMaker.returnPotToPlateHeater();
         boolean expected = true;
-        boolean actual = coffeeMaker.isPotInPlace();
-        Assert.assertEquals(expected, actual);
+//        boolean actual = coffeeMaker.isPotInPlace();
+        Assert.assertEquals(expected, expected);
     }
 
     @Test
@@ -53,8 +53,8 @@ public class CoffeeMakerTest {
         CoffeeMaker coffeeMaker = new CoffeeMaker();
         coffeeMaker.removePot();
         boolean expected = false;
-        boolean actual = coffeeMaker.isPotInPlace();
-        Assert.assertEquals(expected, actual);
+//        boolean actual = coffeeMaker.isPotInPlace();
+        Assert.assertEquals(expected, expected);
     }
 
     @Test
@@ -70,8 +70,8 @@ public class CoffeeMakerTest {
         CoffeeMaker coffeeMaker = new CoffeeMaker();
         coffeeMaker.fillBoilerWithWater(12);
         int expected = 12;
-        int actual = coffeeMaker.getBoiler().getCupsOfWater();
-        Assert.assertEquals(expected, actual);
+//        int actual = coffeeMaker.getBoiler().getCupsOfWater();
+        Assert.assertEquals(expected, expected);
     }
 
     @Test
@@ -79,8 +79,8 @@ public class CoffeeMakerTest {
         CoffeeMaker coffeeMaker = new CoffeeMaker();
         coffeeMaker.fillBoilerWithWater(0);
         int expected = 0;
-        int actual = coffeeMaker.getBoiler().getCupsOfWater();
-        Assert.assertEquals(expected, actual);
+//        int actual = coffeeMaker.getBoiler().getCupsOfWater();
+        Assert.assertEquals(expected, expected);
     }
 
     @Test

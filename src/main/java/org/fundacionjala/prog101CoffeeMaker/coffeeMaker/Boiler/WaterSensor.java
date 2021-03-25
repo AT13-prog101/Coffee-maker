@@ -1,5 +1,6 @@
 package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Boiler;
 
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Interfaces.Container;
 import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Interfaces.Sensor;
 
 public class WaterSensor implements Sensor {
@@ -18,8 +19,11 @@ public class WaterSensor implements Sensor {
      * @return boolean
      */
     @Override
-    public boolean getState() {
-        return stateWater;
+    public int checkState(final Container container) {
+        if (stateWater) {
+            return 1;
+        }
+        return 0;
     }
 
     /**

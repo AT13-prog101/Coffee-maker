@@ -1,5 +1,6 @@
 package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Pot;
 
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Interfaces.Container;
 import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Interfaces.Sensor;
 
 public class PlateSensor implements Sensor {
@@ -10,8 +11,17 @@ public class PlateSensor implements Sensor {
      * @return boolean
      */
     @Override
-    public boolean getState() {
-        return this.statePlate;
+    public int checkState(final Container container) {
+        Pot pot = (Pot) container;
+        if (pot.getAmountOfCups() > 0 && statePlate) {
+            return 1;
+        } else {
+            if (pot.getAmountOfCups() == 0 && statePlate) {
+                return 0;
+            } else {
+                return 2;
+            }
+        }
     }
 
     /**

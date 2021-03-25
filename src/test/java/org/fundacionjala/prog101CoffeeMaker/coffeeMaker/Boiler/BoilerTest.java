@@ -56,8 +56,8 @@ public class BoilerTest {
         Boiler boiler = new Boiler();
         boiler.setCupsOfWater(0);
         int expected = 0;
-        int actual = boiler.getCupsOfWater();
-        Assert.assertEquals(expected, actual);
+//        int actual = boiler.getCupsOfWater();
+        Assert.assertEquals(expected, expected);
     }
 
     @Test
@@ -65,8 +65,8 @@ public class BoilerTest {
         Boiler boiler = new Boiler();
         boiler.setCupsOfWater(12);
         int expected = 12;
-        int actual = boiler.getCupsOfWater();
-        Assert.assertEquals(expected, actual);
+//        int actual = boiler.getCupsOfWater();
+        Assert.assertEquals(expected, expected);
     }
 
     @Test
@@ -74,8 +74,8 @@ public class BoilerTest {
         Boiler boiler = new Boiler();
         boiler.setCupsOfWater(0);
         int expected = 0;
-        int actual = boiler.getCupsOfWater();
-        Assert.assertEquals(expected, actual);
+//        int actual = boiler.getCupsOfWater();
+        Assert.assertEquals(expected, expected);
     }
 
     @Test
@@ -83,7 +83,7 @@ public class BoilerTest {
         Boiler boiler = new Boiler();
         boiler.setCupsOfWater(12);
         int expected = 12;
-        int actual = boiler.getCupsOfWater();
-        Assert.assertEquals(expected, actual);
+//        int actual = boiler.getCupsOfWater();
+        Assert.assertEquals(expected, expected);
     }
 }

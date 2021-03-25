@@ -2,6 +2,7 @@ package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Boiler;
 
 import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Interfaces.Container;
 import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Interfaces.Heater;
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Pot.Pot;
 
 public class Boiler implements Container, Heater {
 
@@ -9,10 +10,12 @@ public class Boiler implements Container, Heater {
     private WaterSensor waterSensor;
     private boolean workingBoiler;
     private int cupsOfWater;
+    private Pot pot;
     public Boiler() {
         pressureRelietValve = new PressureRelietValve();
         waterSensor = new WaterSensor();
         this.cupsOfWater = 0;
+        pot = new Pot();
     }
 
     /**
@@ -21,23 +24,28 @@ public class Boiler implements Container, Heater {
      */
     @Override
     public boolean containLiquid() {
-        if (waterSensor.getState()) {
+        if (waterSensor.checkState(pot) == 1) {
             return true;
         }
         return false;
     }
 
     /**
+     * amount
+     * @return
+     */
+    @Override
+    public int amountOfLiquid() {
+        return cupsOfWater;
+    }
+
+    /**
      * Changes workingBoiler to true and the state pressure Reliet Valve to close.
      */
     @Override
-    public boolean on() {
-        if (waterSensor.getState()) {
-            pressureRelietValve.close();
-            workingBoiler = true;
-            return true;
-        }
-        return false;
+    public void on() {
+        pressureRelietValve.close();
+        workingBoiler = true;
     }
 
     /**
@@ -57,14 +65,6 @@ public class Boiler implements Container, Heater {
         if (this.cupsOfWater == 0) {
             waterSensor.thereIsNoWaterInBoiler();
         }
-    }
-
-    /**
-     * Obtains coups of water
-     * @return cupsOfWater
-     */
-    public int getCupsOfWater() {
-        return cupsOfWater;
     }
 
     /**
