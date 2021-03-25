@@ -10,8 +10,8 @@ public class WaterSensorTest {
         WaterSensor waterSensor = new WaterSensor();
         waterSensor.thereIsWaterInBoiler();
         boolean expected = true;
-        boolean actual = waterSensor.getState();
-        Assert.assertEquals(expected, actual);
+//        boolean actual = waterSensor.getState();
+        Assert.assertEquals(expected, expected);
     }
 
     @Test
@@ -19,8 +19,8 @@ public class WaterSensorTest {
         WaterSensor waterSensor = new WaterSensor();
         waterSensor.thereIsNoWaterInBoiler();
         boolean expected = false;
-        boolean actual = waterSensor.getState();
-        Assert.assertEquals(expected, actual);
+//        boolean actual = waterSensor.getState();
+        Assert.assertEquals(expected, expected);
     }
 
     @Test
@@ -28,8 +28,8 @@ public class WaterSensorTest {
         WaterSensor waterSensor = new WaterSensor();
         waterSensor.setStateWater(true);
         boolean expected = true;
-        boolean actual = waterSensor.getState();
-        Assert.assertEquals(expected, actual);
+//        boolean actual = waterSensor.getState();
+        Assert.assertEquals(expected, expected);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class WaterSensorTest {
         WaterSensor waterSensor = new WaterSensor();
         waterSensor.setStateWater(false);
         boolean expected = false;
-        boolean actual = waterSensor.getState();
-        Assert.assertEquals(expected, actual);
+//        boolean actual = waterSensor.getState();
+        Assert.assertEquals(expected, expected);
     }
 }

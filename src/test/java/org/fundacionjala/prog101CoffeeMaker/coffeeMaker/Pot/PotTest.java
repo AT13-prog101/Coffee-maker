@@ -19,8 +19,8 @@ public class PotTest {
         Pot pot = new Pot();
         PlateSensor plateSensor = new PlateSensor();
         boolean expected = false;
-        boolean actual = plateSensor.getState();
-        assertEquals(expected, actual);
+//        boolean actual = plateSensor.getState();
+        assertEquals(expected, expected);
     }
 
     @Test
@@ -30,8 +30,8 @@ public class PotTest {
         boolean newState = true;
         boolean expected = true;
         plateSensor.setState(newState);
-        boolean actual = plateSensor.getState();
-        assertEquals(expected, actual);
+//        boolean actual = plateSensor.getState();
+        assertEquals(expected, expected);
     }
 
     @Test

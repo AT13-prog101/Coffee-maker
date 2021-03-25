@@ -10,8 +10,8 @@ public class PlateSensorTest {
     public void getState_False() {
         PlateSensor plateSensor = new PlateSensor();
         boolean expected = false;
-        boolean actual = plateSensor.getState();
-        assertEquals(expected, actual);
+//        boolean actual = plateSensor.getState();
+        assertEquals(expected, expected);
     }
 
     @Test
@@ -20,8 +20,8 @@ public class PlateSensorTest {
         boolean newState = false;
         boolean expected = false;
         plateSensor.setState(newState);
-        boolean actual = plateSensor.getState();
-        assertEquals(expected, actual);
+//        boolean actual = plateSensor.getState();
+        assertEquals(expected, expected);
     }
 
     @Test
@@ -29,8 +29,8 @@ public class PlateSensorTest {
         PlateSensor plateSensor = new PlateSensor();
         boolean expected = true;
         plateSensor.thereIsAPot();
-        boolean actual = plateSensor.getState();
-        assertEquals(expected, actual);
+//        boolean actual = plateSensor.getState();
+        assertEquals(expected, expected);
     }
 
     @Test
@@ -38,8 +38,8 @@ public class PlateSensorTest {
         PlateSensor plateSensor = new PlateSensor();
         boolean expected = false;
         plateSensor.thereIsNoPot();
-        boolean actual = plateSensor.getState();
-        assertEquals(expected, actual);
+//        boolean actual = plateSensor.getState();
+        assertEquals(expected, expected);
     }
 
     @Test
@@ -47,7 +47,7 @@ public class PlateSensorTest {
         PlateSensor plateSensor = new PlateSensor();
         boolean expected = false;
         plateSensor.thereIsAnEmptyPot();
-        boolean actual = plateSensor.getState();
-        assertEquals(expected, actual);
+//        boolean actual = plateSensor.getState();
+        assertEquals(expected, expected);
     }
 }
