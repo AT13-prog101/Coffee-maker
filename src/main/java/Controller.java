@@ -19,7 +19,11 @@ public class Controller implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        file = new File("C:\\Jala\\progra101\\edson\\comercial.mp4");
+        media = new Media(file.toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        mv.setMediaPlayer(mediaPlayer);
+        mediaPlayer.play();
     }
 
     @FXML
