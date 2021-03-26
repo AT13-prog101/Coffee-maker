@@ -20,6 +20,7 @@ public class Controller implements Initializable{
     private File file;
     private Media media;
     private ControllerCoffeeMaker coffeeMaker;
+    @FXML
     private TextArea textAreaField;
 
     @Override
@@ -36,12 +37,15 @@ public class Controller implements Initializable{
     @FXML
     private void play_Video() {
         coffeeMaker.initCoffeeMaker();
+
         if (coffeeMaker.verifyConditionsForCoffeeMaker()) {
             file = new File("C:\\Jala\\progra101\\edson\\startButton.mp4");
             media = new Media(file.toURI().toString());
             mediaPlayer = new MediaPlayer(media);
             mv.setMediaPlayer(mediaPlayer);
             mediaPlayer.play();
+            textAreaField.setText("Starting coffee maker...!!!");
+        }else{
             textAreaField.setText(coffeeMaker.printForInterface());
         }
     }
@@ -55,8 +59,8 @@ public class Controller implements Initializable{
             mediaPlayer = new MediaPlayer(media);
             mv.setMediaPlayer(mediaPlayer);
             mediaPlayer.play();
-            textAreaField.setText(coffeeMaker.printForInterface());
         }
+        textAreaField.setText(coffeeMaker.printForInterface());
     }
 
     @FXML
@@ -67,10 +71,8 @@ public class Controller implements Initializable{
             mediaPlayer = new MediaPlayer(media);
             mv.setMediaPlayer(mediaPlayer);
             mediaPlayer.play();
-            textAreaField.setText(coffeeMaker.printForInterface());
         }
-
-
+        textAreaField.setText(coffeeMaker.printForInterface());
     }
 
     @FXML
@@ -81,9 +83,8 @@ public class Controller implements Initializable{
             mediaPlayer = new MediaPlayer(media);
             mv.setMediaPlayer(mediaPlayer);
             mediaPlayer.play();
-            textAreaField.setText(coffeeMaker.printForInterface());
-
         }
+        textAreaField.setText(coffeeMaker.printForInterface());
     }
 
     @FXML
@@ -94,8 +95,8 @@ public class Controller implements Initializable{
             mediaPlayer = new MediaPlayer(media);
             mv.setMediaPlayer(mediaPlayer);
             mediaPlayer.play();
-            textAreaField.setText(coffeeMaker.printForInterface());
         }
+        textAreaField.setText(coffeeMaker.printForInterface());
     }
 
     @FXML
