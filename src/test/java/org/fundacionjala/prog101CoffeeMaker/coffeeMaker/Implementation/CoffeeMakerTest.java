@@ -1,6 +1,9 @@
 package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Implementation;
 
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Boiler.Boiler;
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Boiler.PressureRelietValve;
 import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Pieces.FilterAndReceptacle;
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Pieces.IndicatorLight;
 import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Pieces.StartButton;
 import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Pot.PlateSensor;
 import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Pot.Pot;
@@ -188,10 +191,86 @@ public class CoffeeMakerTest {
     }
 
     @Test
-    public void getPot() {
+    public void bolierOff_Output_PressureValveOpenedAndWorkkingBoilerFalse() {
+        CoffeeMaker coffeeMaker = new CoffeeMaker();
+        Outputs outputs = new Outputs();
+        Boiler boiler = new Boiler();
+        coffeeMaker.boilerOff(outputs);
+        boolean expected = false;
+        boolean actual = boiler.getWorkingBoiler();
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void getDeliveryPipe() {
+    public void bolierOn_Output_PressureValveClosedAndWorkkingBoilerTrue() {
+        CoffeeMaker coffeeMaker = new CoffeeMaker();
+        Outputs outputs = new Outputs();
+        PressureRelietValve pressureRelietValve = new PressureRelietValve();
+        coffeeMaker.boilerOn(outputs);
+        boolean expected = false;
+        boolean actual = pressureRelietValve.getStateValve();
+        Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void potPlateOn_Output_LightTurnedOnAndPotOn() {
+        CoffeeMaker coffeeMaker = new CoffeeMaker();
+        Pot pot = new Pot();
+        pot.on();
+        Outputs outputs = new Outputs();
+        coffeeMaker.potPlateOn(outputs);
+        boolean expected = true;
+        boolean actual = pot.obtainWorkingPot();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void potPlateOff_Output_LightTurnedOffAndPotOff() {
+        CoffeeMaker coffeeMaker = new CoffeeMaker();
+        Pot pot = new Pot();
+        pot.off();
+        Outputs outputs = new Outputs();
+        coffeeMaker.potPlateOff(outputs);
+        boolean expected = false;
+        boolean actual = pot.obtainWorkingPot();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void makingCoffee_Output_BoilerRestOneCupAndPotPluOneCup() {
+        CoffeeMaker coffeeMaker = new CoffeeMaker();
+        Pot pot = new Pot();
+        pot.plusOneCup();
+        Outputs outputs = new Outputs();
+        coffeeMaker.makingCoffee(outputs);
+        int expected = 1;
+        int actual = pot.getAmountOfCups();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void returnPotToPlateHeater_Output_PlacingPot() {
+        CoffeeMaker coffeeMaker = new CoffeeMaker();
+        PlateSensor plateSensor = new PlateSensor();
+        Outputs outputs = new Outputs();
+        plateSensor.thereIsNoPot();
+        coffeeMaker.returnPotToPlateHeater(outputs);
+        boolean expected = false;
+        boolean actual = plateSensor.obtainStatePlate();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void returnPotToPlateHeater_Output_PotPlaced() {
+        CoffeeMaker coffeeMaker = new CoffeeMaker();
+        PlateSensor plateSensor = new PlateSensor();
+        Pot pot = new Pot();
+        Outputs outputs = new Outputs();
+        pot.setAmountOfCups(3);
+        coffeeMaker.returnPotToPlateHeater(outputs);
+        boolean expected = false;
+        boolean actual = plateSensor.obtainStatePlate();
+        Assert.assertEquals(expected, actual);
+    }
+
 }

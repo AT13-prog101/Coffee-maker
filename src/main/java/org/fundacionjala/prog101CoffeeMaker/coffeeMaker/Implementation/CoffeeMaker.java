@@ -48,7 +48,7 @@ public class CoffeeMaker {
      * @return
      */
     public void potPlateOn(final Outputs outputs) {
-        outputs.print(outputs.formatColorGreen("PlateHeater and light pot is on"));
+        outputs.print(outputs.formatColorGreen("PlateHeater and light pot are on"));
         indicatorLight.turnOn();
         pot.on();
     }

@@ -6,13 +6,12 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Implementation.ControllerCoffeeMaker;
-import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Implementation.Outputs;
 
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable{
+public class Controller implements Initializable {
 
     @FXML
     private MediaView mv;
@@ -45,7 +44,7 @@ public class Controller implements Initializable{
             mv.setMediaPlayer(mediaPlayer);
             mediaPlayer.play();
             textAreaField.setText("Starting coffee maker...!!!");
-        }else{
+        } else {
             textAreaField.setText(coffeeMaker.printForInterface());
         }
     }
