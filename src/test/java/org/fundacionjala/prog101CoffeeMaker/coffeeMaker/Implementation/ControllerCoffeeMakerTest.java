@@ -8,26 +8,6 @@ import static org.junit.Assert.*;
 public class ControllerCoffeeMakerTest {
 
     @Test
-    public void initialize() {
-    }
-
-    @Test
-    public void startCoffeeMaker() {
-    }
-
-    @Test
-    public void entryOption() {
-    }
-
-    @Test
-    public void makingCoffeeMaker() {
-    }
-
-    @Test
-    public void intermittencePlateHeater() {
-    }
-
-    @Test
     public void removePotOverPlateHeater_WhenIWantRemovePotAgain_False() {
         ControllerCoffeeMaker controllerCoffeeMaker = new ControllerCoffeeMaker();
         boolean expected = false;
@@ -59,10 +39,6 @@ public class ControllerCoffeeMakerTest {
         boolean expected = false;
         boolean actual = controllerCoffeeMaker.loadPotOverHeaterPlatePot();
         Assert.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void initCoffeeMaker() {
     }
 
     @Test
