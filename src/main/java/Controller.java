@@ -1,8 +1,19 @@
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
-public class Controller {
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+
+//import javax.print.attribute.standard.Media;
+import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class Controller implements Initializable{
 
     @FXML
     private TextField field1;
@@ -10,13 +21,34 @@ public class Controller {
     private TextField field2;
     @FXML
     private TextField field3;
-
     @FXML
     private Label results;
+    @FXML
+    private Button boton;
+    @FXML
+    private MediaView mv;
 
     private int numericDate1 = 0;
     private int numericDate2 = 0;
     private int numericDate3 = 0;
+    private MediaPlayer mediaPlayer;
+    private File file;
+    private Media media;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        file = new File("C:\\Jala\\progra101\\edson\\water.mp4");
+        media = new Media(file.toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        mv.setMediaPlayer(mediaPlayer);
+    }
+
+    @FXML
+    private void play_Video() {
+        mediaPlayer.play();
+
+    }
 
     @FXML
     private void action() {
@@ -76,4 +108,6 @@ public class Controller {
         field2.setText("");
         field3.setText("");
     }
+
+
 }
