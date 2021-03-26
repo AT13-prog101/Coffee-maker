@@ -11,7 +11,7 @@ public class Outputs {
     private final String colorPurple = "\u001B[35m";
     private final String colorCyan = "\u001B[36m";
     private final String colorWhite = "\u001B[37m";
-
+    private String printForInterface = "";
     /**
      * Print method
      * @param message
@@ -21,10 +21,27 @@ public class Outputs {
     }
 
     /**
+     * erase the String for graphical interface
+     */
+    public void eraseStringForInterface() {
+        printForInterface = "";
+    }
+
+    /**
+     * String with all message for function
+     * @return
+     */
+    public String printForInterface() {
+        return printForInterface;
+    }
+
+
+    /**
      * Changed format for print error in color red
      * @param message
      */
     public String formatError(final String message) {
+        printForInterface += message + "\n";
         return colorRed + "Error : " + message + colorReset;
     }
 
@@ -33,6 +50,7 @@ public class Outputs {
      * @param message
      */
     public String formatColorGreen(final String message) {
+        printForInterface += message + "\n";
         return colorGreen + message + colorReset;
     }
 
@@ -41,6 +59,7 @@ public class Outputs {
      * @param message
      */
     public String formatColorYellow(final String message) {
+        printForInterface += message + "\n";
         return colorCyan + message + colorReset;
     }
 

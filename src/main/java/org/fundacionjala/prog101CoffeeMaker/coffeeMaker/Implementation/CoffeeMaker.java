@@ -48,7 +48,7 @@ public class CoffeeMaker {
      * @return
      */
     public void potPlateOn(final Outputs outputs) {
-        outputs.print(outputs.formatColorGreen("PlateHeater and light pot is on"));
+        outputs.print(outputs.formatColorGreen("PlateHeater and light pot are on"));
         indicatorLight.turnOn();
         pot.on();
     }
@@ -71,26 +71,30 @@ public class CoffeeMaker {
     /**
      * Return the pot to it's place on the plateSensor
      */
-    public void returnPotToPlateHeater(final Outputs outputs) {
+    public boolean returnPotToPlateHeater(final Outputs outputs) {
         if (plateSensor.checkState(pot) == 2) {
             outputs.print(outputs.formatColorGreen("Placing the pot ..."));
             plateSensor.thereIsAPot();
             outputs.print(outputs.formatColorGreen("The pot is ready"));
+            return true;
         } else {
             outputs.print(outputs.formatColorYellow("The pot is already in place"));
+            return false;
         }
     }
 
     /**
      * Return the pot to it's place on the plateSensor
      */
-    public void removePotToPlateHeater(final Outputs outputs) {
+    public boolean removePotToPlateHeater(final Outputs outputs) {
         if (plateSensor.checkState(pot) == 0 || plateSensor.checkState(pot) == 1) {
             outputs.print(outputs.formatColorGreen("Removing the pot ..."));
             plateSensor.thereIsNoPot();
             outputs.print(outputs.formatColorGreen("The pot is removed"));
+            return true;
         } else {
             outputs.print(outputs.formatColorYellow("The pot is not longer on the sensor plate"));
+            return false;
         }
     }
 
@@ -120,26 +124,30 @@ public class CoffeeMaker {
     /**
      * Added water in CoffeeMaker
      */
-    public void loadWater(final Outputs outputs, final int cupsWater) {
+    public boolean loadWater(final Outputs outputs, final int cupsWater) {
         if (!isBoilerWithWater()) {
             outputs.print(outputs.formatColorGreen("Adding water..."));
             fillBoilerWithWater(cupsWater);
             outputs.print(outputs.formatColorGreen("The water is ready"));
+            return true;
         } else {
             outputs.print(outputs.formatColorYellow("No more water can be inserted"));
+            return false;
         }
     }
 
     /**
      * Added coffee in CoffeeMaker
      */
-    public void loadCoffeeBeans(final Outputs outputs) {
+    public boolean loadCoffeeBeans(final Outputs outputs) {
         if (!isFilterWithCoffeeBeans()) {
             outputs.print(outputs.formatColorGreen("Adding coffee to the coffee filter..."));
             fillFilterWithCoffeeGrains();
             outputs.print(outputs.formatColorGreen("The coffee is ready"));
+        return true;
         } else {
             outputs.print(outputs.formatColorYellow("No more coffee can be inserted"));
+            return false;
         }
     }
 

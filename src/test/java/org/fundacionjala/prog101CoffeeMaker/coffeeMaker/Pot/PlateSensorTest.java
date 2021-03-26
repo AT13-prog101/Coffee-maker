@@ -7,47 +7,93 @@ import static org.junit.Assert.*;
 public class PlateSensorTest {
 
     @Test
-    public void getState_False() {
+    public void checkState_One() {
         PlateSensor plateSensor = new PlateSensor();
-        boolean expected = false;
-//        boolean actual = plateSensor.getState();
-        assertEquals(expected, expected);
+        Pot pot = new Pot();
+        plateSensor.thereIsAPot();
+        pot.setAmountOfCups(1);
+        int expected = 1;
+        int actual = plateSensor.checkState(pot);
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void setState_newStateFalse_False() {
+    public void checkState_Zero() {
+        PlateSensor plateSensor = new PlateSensor();
+        Pot pot = new Pot();
+        plateSensor.thereIsAPot();
+        pot.setAmountOfCups(0);
+        int expected = 0;
+        int actual = plateSensor.checkState(pot);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void checkState_Two() {
+        PlateSensor plateSensor = new PlateSensor();
+        Pot pot = new Pot();
+        plateSensor.thereIsAPot();
+        pot.setAmountOfCups(1);
+        int expected = 1;
+        int actual = plateSensor.checkState(pot);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void checkState_TwoToo() {
+        PlateSensor plateSensor = new PlateSensor();
+        Pot pot = new Pot();
+        plateSensor.thereIsAnEmptyPot();
+        pot.setAmountOfCups(2);
+        int expected = 2;
+        int actual = plateSensor.checkState(pot);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void obtainStatePlate_newStateFalse_False() {
         PlateSensor plateSensor = new PlateSensor();
         boolean newState = false;
-        boolean expected = false;
         plateSensor.setState(newState);
-//        boolean actual = plateSensor.getState();
-        assertEquals(expected, expected);
+        boolean expected = false;
+        boolean actual = plateSensor.obtainStatePlate();
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void thereIsAPot_True() {
+    public void obtainStatePlate_newStateTrue_True() {
         PlateSensor plateSensor = new PlateSensor();
+        boolean newState = true;
+        plateSensor.setState(newState);
         boolean expected = true;
+        boolean actual = plateSensor.obtainStatePlate();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void obtainStatePlate_True() {
+        PlateSensor plateSensor = new PlateSensor();
         plateSensor.thereIsAPot();
-//        boolean actual = plateSensor.getState();
-        assertEquals(expected, expected);
+        boolean expected = true;
+        boolean actual = plateSensor.obtainStatePlate();
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void thereIsNoPot_False() {
+    public void obtainStatePlate_False() {
         PlateSensor plateSensor = new PlateSensor();
-        boolean expected = false;
         plateSensor.thereIsNoPot();
-//        boolean actual = plateSensor.getState();
-        assertEquals(expected, expected);
+        boolean expected = false;
+        boolean actual = plateSensor.obtainStatePlate();
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void thereIsAnEmptyPot_False() {
+    public void obtainStatePlate_FalseToo() {
         PlateSensor plateSensor = new PlateSensor();
-        boolean expected = false;
         plateSensor.thereIsAnEmptyPot();
-//        boolean actual = plateSensor.getState();
-        assertEquals(expected, expected);
+        boolean expected = false;
+        boolean actual = plateSensor.obtainStatePlate();
+        assertEquals(expected, actual);
     }
 }

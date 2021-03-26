@@ -1,6 +1,6 @@
 package org.fundacionjala.prog101CoffeeMaker;
 
-import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Implementation.Controller;
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Implementation.ControllerCoffeeMaker;
 
 public final class Main {
 
@@ -8,7 +8,7 @@ public final class Main {
     }
 
     public static void main(final String[] args) throws InterruptedException {
-        Controller coffeeMaker = new Controller();
+        ControllerCoffeeMaker coffeeMaker = new ControllerCoffeeMaker();
         coffeeMaker.initialize();
     }
 }
