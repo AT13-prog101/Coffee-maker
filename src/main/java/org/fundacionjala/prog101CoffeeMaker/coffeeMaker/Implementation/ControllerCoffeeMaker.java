@@ -170,6 +170,12 @@ public class ControllerCoffeeMaker {
         outputs.print(outputs.formatColorGreen("Selected option 3"));
         coffeeMaker.loadCoffeeBeans(outputs);
     }
+    /**
+     * Verify conditions for coffee maker
+     */
+    public boolean verifyConditionsForCoffeeMaker(){
+        return coffeeMaker.verifyConditionsForCoffeeMaker();
+    }
 
     /**
      * close all program

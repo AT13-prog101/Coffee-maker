@@ -4,6 +4,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Implementation.ControllerCoffeeMaker;
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Implementation.Outputs;
 
 import java.io.File;
 import java.net.URL;
@@ -16,6 +18,7 @@ public class Controller implements Initializable{
     private MediaPlayer mediaPlayer;
     private File file;
     private Media media;
+    private ControllerCoffeeMaker coffeeMaker;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -24,15 +27,20 @@ public class Controller implements Initializable{
         mediaPlayer = new MediaPlayer(media);
         mv.setMediaPlayer(mediaPlayer);
         mediaPlayer.play();
+        coffeeMaker = new ControllerCoffeeMaker();
     }
 
     @FXML
     private void play_Video() {
-        file = new File("C:\\Jala\\progra101\\edson\\startButton.mp4");
-        media = new Media(file.toURI().toString());
-        mediaPlayer = new MediaPlayer(media);
-        mv.setMediaPlayer(mediaPlayer);
-        mediaPlayer.play();
+        coffeeMaker.initCoffeeMaker();
+        if (coffeeMaker.verifyConditionsForCoffeeMaker()){
+            file = new File("C:\\Jala\\progra101\\edson\\startButton.mp4");
+            media = new Media(file.toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            mv.setMediaPlayer(mediaPlayer);
+            mediaPlayer.play();
+
+        }
     }
 
     @FXML
@@ -42,6 +50,7 @@ public class Controller implements Initializable{
         mediaPlayer = new MediaPlayer(media);
         mv.setMediaPlayer(mediaPlayer);
         mediaPlayer.play();
+        coffeeMaker.loadWater(12);
     }
 
     @FXML
@@ -51,6 +60,7 @@ public class Controller implements Initializable{
         mediaPlayer = new MediaPlayer(media);
         mv.setMediaPlayer(mediaPlayer);
         mediaPlayer.play();
+        coffeeMaker.loadCoffeeBeans();
     }
 
     @FXML
@@ -60,6 +70,7 @@ public class Controller implements Initializable{
         mediaPlayer = new MediaPlayer(media);
         mv.setMediaPlayer(mediaPlayer);
         mediaPlayer.play();
+        coffeeMaker.loadPotOverHeaterPlatePot();
     }
 
     @FXML
@@ -69,6 +80,12 @@ public class Controller implements Initializable{
         mediaPlayer = new MediaPlayer(media);
         mv.setMediaPlayer(mediaPlayer);
         mediaPlayer.play();
+        coffeeMaker.removePotOverPlateHeater();
+    }
+
+    @FXML
+    private void exitCoffee(){
+        coffeeMaker.exit();
     }
 
 }
