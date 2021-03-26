@@ -2,7 +2,7 @@ package org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Implementation;
 import java.util.TimerTask;
 import java.util.Timer;
 
-public class Controller {
+public class ControllerCoffeeMaker {
     private CoffeeMaker coffeeMaker;
     private Inputs inputs;
     private Outputs outputs;
@@ -19,7 +19,7 @@ public class Controller {
 
     private final int intermittenceDrinkCoffee = 14;
 
-    public Controller() {
+    public ControllerCoffeeMaker() {
         coffeeMaker = new CoffeeMaker();
         inputs = new Inputs();
         outputs = new Outputs();

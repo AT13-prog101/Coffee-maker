@@ -1,9 +1,15 @@
-apply plugin: 'java'
-apply plugin: 'application'
-apply plugin: 'checkstyle'
-apply plugin: 'jacoco'
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.7'
+    id 'checkstyle'
+    id 'jacoco'
+}
 
-mainClassName = 'org.fundacionjala.prog101CoffeeMaker.Main'
+group 'Coffee'
+version '1.0'
+
+sourceCompatibility = 11
 
 repositories {
     mavenCentral()
@@ -28,27 +34,29 @@ jacocoTestReport {
         }))
     }
 }
-
 checkstyle {
     toolVersion '8.34'
     configFile file('config/checkstyle/checkstyle.xml')
     checkstyleMain.source = "src/main/"
     checkstyleMain.excludes = ["**/src/test/**"]
 }
-
 checkstyleMain {
     source = 'src/main/java'
 }
-
 run{
     standardInput = System.in
 }
-
 checkstyleTest {
     source = 'src/main/java'
 }
-
 check.dependsOn jacocoTestReport
 
 test.finalizedBy("checkstyleMain")
 test.finalizedBy("jacocoTestReport")
+
+javafx {
+    modules = [ 'javafx.controls' , 'javafx.fxml' ]
+    version = '11.0.2'
+}
+
+mainClassName = 'Main'
