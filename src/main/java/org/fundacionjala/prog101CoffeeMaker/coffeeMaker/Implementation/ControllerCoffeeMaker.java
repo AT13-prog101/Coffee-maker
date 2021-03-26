@@ -136,16 +136,22 @@ public class ControllerCoffeeMaker {
     /**
      * Remove the pot from the sensor, checking if it has already been removed
      */
-    public void removePotOverPlateHeater() {
+    public boolean removePotOverPlateHeater() {
         outputs.print(outputs.formatColorGreen("Selected option 5"));
-        coffeeMaker.removePotToPlateHeater(outputs);
+        if (coffeeMaker.removePotToPlateHeater(outputs)) {
+            return true;
+        }
+        return false;
     }
     /**
      * Returns the pot on the sensor plate, checking if it has already been returned.
      */
-    public void loadPotOverHeaterPlatePot() {
+    public boolean loadPotOverHeaterPlatePot() {
         outputs.print(outputs.formatColorGreen("Selected option 4"));
-        coffeeMaker.returnPotToPlateHeater(outputs);
+        if (coffeeMaker.returnPotToPlateHeater(outputs)) {
+            return true;
+        }
+        return false;
     }
     /**
      * Verify if there is water and coffee in the coffee maker, if there is, start the coffee process
@@ -158,23 +164,39 @@ public class ControllerCoffeeMaker {
     /**
      * Added water in CoffeeMaker
      */
-    public void loadWater(final int cupsWater) {
+    public boolean loadWater(final int cupsWater) {
         outputs.print(outputs.formatColorGreen("Selected option 2"));
-        coffeeMaker.loadWater(outputs, cupsWater);
+        if (coffeeMaker.loadWater(outputs, cupsWater)) {
+            return true;
+        }
+        return false;
     }
 
     /**
      * Added coffee in CoffeeMaker
      */
-    public void loadCoffeeBeans() {
+    public boolean loadCoffeeBeans() {
         outputs.print(outputs.formatColorGreen("Selected option 3"));
-        coffeeMaker.loadCoffeeBeans(outputs);
+        if (coffeeMaker.loadCoffeeBeans(outputs)) {
+            return true;
+        }
+        return false;
     }
     /**
      * Verify conditions for coffee maker
      */
-    public boolean verifyConditionsForCoffeeMaker(){
+    public boolean verifyConditionsForCoffeeMaker() {
         return coffeeMaker.verifyConditionsForCoffeeMaker();
+    }
+
+    /**
+     * Send the message for graphical interface
+     * @return
+     */
+    public String printForInterface() {
+        String message = outputs.printForInterface();
+        outputs.eraseStringForInterface();
+        return message;
     }
 
     /**

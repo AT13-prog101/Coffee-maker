@@ -1,6 +1,7 @@
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
+import javafx.scene.control.TextArea;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -19,6 +20,7 @@ public class Controller implements Initializable{
     private File file;
     private Media media;
     private ControllerCoffeeMaker coffeeMaker;
+    private TextArea textAreaField;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -28,63 +30,76 @@ public class Controller implements Initializable{
         mv.setMediaPlayer(mediaPlayer);
         mediaPlayer.play();
         coffeeMaker = new ControllerCoffeeMaker();
+        textAreaField.setText("Welcome Coffee Maker \nConsole Area...");
     }
 
     @FXML
     private void play_Video() {
         coffeeMaker.initCoffeeMaker();
-        if (coffeeMaker.verifyConditionsForCoffeeMaker()){
+        if (coffeeMaker.verifyConditionsForCoffeeMaker()) {
             file = new File("C:\\Jala\\progra101\\edson\\startButton.mp4");
             media = new Media(file.toURI().toString());
             mediaPlayer = new MediaPlayer(media);
             mv.setMediaPlayer(mediaPlayer);
             mediaPlayer.play();
-
+            textAreaField.setText(coffeeMaker.printForInterface());
         }
     }
 
     @FXML
     private void playWater() {
-        file = new File("C:\\Jala\\progra101\\edson\\water.mp4");
-        media = new Media(file.toURI().toString());
-        mediaPlayer = new MediaPlayer(media);
-        mv.setMediaPlayer(mediaPlayer);
-        mediaPlayer.play();
-        coffeeMaker.loadWater(12);
+        final int waterCups = 12;
+        if (coffeeMaker.loadWater(waterCups)) {
+            file = new File("C:\\Jala\\progra101\\edson\\water.mp4");
+            media = new Media(file.toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            mv.setMediaPlayer(mediaPlayer);
+            mediaPlayer.play();
+            textAreaField.setText(coffeeMaker.printForInterface());
+        }
     }
 
     @FXML
     private void playCoffee() {
-        file = new File("C:\\Jala\\progra101\\edson\\beansCoffee.mp4");
-        media = new Media(file.toURI().toString());
-        mediaPlayer = new MediaPlayer(media);
-        mv.setMediaPlayer(mediaPlayer);
-        mediaPlayer.play();
-        coffeeMaker.loadCoffeeBeans();
+        if (coffeeMaker.loadCoffeeBeans()) {
+            file = new File("C:\\Jala\\progra101\\edson\\beansCoffee.mp4");
+            media = new Media(file.toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            mv.setMediaPlayer(mediaPlayer);
+            mediaPlayer.play();
+            textAreaField.setText(coffeeMaker.printForInterface());
+        }
+
+
     }
 
     @FXML
     private void playPutPot() {
-        file = new File("C:\\Jala\\progra101\\edson\\loadPot.mp4");
-        media = new Media(file.toURI().toString());
-        mediaPlayer = new MediaPlayer(media);
-        mv.setMediaPlayer(mediaPlayer);
-        mediaPlayer.play();
-        coffeeMaker.loadPotOverHeaterPlatePot();
+        if (coffeeMaker.loadPotOverHeaterPlatePot()) {
+            file = new File("C:\\Jala\\progra101\\edson\\loadPot.mp4");
+            media = new Media(file.toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            mv.setMediaPlayer(mediaPlayer);
+            mediaPlayer.play();
+            textAreaField.setText(coffeeMaker.printForInterface());
+
+        }
     }
 
     @FXML
     private void playRemovePot() {
-        file = new File("C:\\Jala\\progra101\\edson\\removePot.mp4");
-        media = new Media(file.toURI().toString());
-        mediaPlayer = new MediaPlayer(media);
-        mv.setMediaPlayer(mediaPlayer);
-        mediaPlayer.play();
-        coffeeMaker.removePotOverPlateHeater();
+        if (coffeeMaker.removePotOverPlateHeater()) {
+            file = new File("C:\\Jala\\progra101\\edson\\removePot.mp4");
+            media = new Media(file.toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            mv.setMediaPlayer(mediaPlayer);
+            mediaPlayer.play();
+            textAreaField.setText(coffeeMaker.printForInterface());
+        }
     }
 
     @FXML
-    private void exitCoffee(){
+    private void exitCoffee() {
         coffeeMaker.exit();
     }
 

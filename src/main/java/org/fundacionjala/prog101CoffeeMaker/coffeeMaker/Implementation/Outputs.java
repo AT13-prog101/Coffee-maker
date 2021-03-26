@@ -11,14 +11,31 @@ public class Outputs {
     private final String colorPurple = "\u001B[35m";
     private final String colorCyan = "\u001B[36m";
     private final String colorWhite = "\u001B[37m";
-
+    private String printForInterface = "";
     /**
      * Print method
      * @param message
      */
     public void print(final String message) {
+        printForInterface += message + "\n";
         System.out.println(message);
     }
+
+    /**
+     * erase the String for graphical interface
+     */
+    public void eraseStringForInterface() {
+        printForInterface = "";
+    }
+
+    /**
+     * String with all message for function
+     * @return
+     */
+    public String printForInterface() {
+        return printForInterface;
+    }
+
 
     /**
      * Changed format for print error in color red
