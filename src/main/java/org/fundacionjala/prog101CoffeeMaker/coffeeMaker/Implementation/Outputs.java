@@ -17,7 +17,6 @@ public class Outputs {
      * @param message
      */
     public void print(final String message) {
-        printForInterface += message + "\n";
         System.out.println(message);
     }
 
@@ -42,6 +41,7 @@ public class Outputs {
      * @param message
      */
     public String formatError(final String message) {
+        printForInterface += message + "\n";
         return colorRed + "Error : " + message + colorReset;
     }
 
@@ -50,6 +50,7 @@ public class Outputs {
      * @param message
      */
     public String formatColorGreen(final String message) {
+        printForInterface += message + "\n";
         return colorGreen + message + colorReset;
     }
 
@@ -58,6 +59,7 @@ public class Outputs {
      * @param message
      */
     public String formatColorYellow(final String message) {
+        printForInterface += message + "\n";
         return colorCyan + message + colorReset;
     }
 
