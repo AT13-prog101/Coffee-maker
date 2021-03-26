@@ -24,7 +24,7 @@ public class Main extends Application {
     public void start(final Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
-        primaryStage.setTitle("AT13 - Edson Añawaya Rios");
+        primaryStage.setTitle("CoffeeMaker");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 

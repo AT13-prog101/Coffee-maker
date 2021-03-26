@@ -1,79 +1,106 @@
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Label;
+import javafx.fxml.Initializable;
 
-public class Controller {
+import javafx.scene.control.TextArea;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Implementation.ControllerCoffeeMaker;
+import org.fundacionjala.prog101CoffeeMaker.coffeeMaker.Implementation.Outputs;
 
-    @FXML
-    private TextField field1;
-    @FXML
-    private TextField field2;
-    @FXML
-    private TextField field3;
+import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    @FXML
-    private Label results;
-
-    private int numericDate1 = 0;
-    private int numericDate2 = 0;
-    private int numericDate3 = 0;
+public class Controller implements Initializable{
 
     @FXML
-    private void action() {
-        if (sanity(field1.getText())) {
-            if (sanity(field2.getText())) {
-                if (sanity(field3.getText())) {
-                    numericDate1 = Integer.parseInt(field1.getText().trim());
-                    numericDate2 = Integer.parseInt(field2.getText().trim());
-                    numericDate3 = Integer.parseInt(field3.getText().trim());
-                    results.setText("");
-                    results.setText(verify(numericDate1, numericDate2, numericDate3));
-                } else {
-                    results.setText("Date 3 invalid");
-                }
-            } else {
-                results.setText("Date 2 invalid");
-            }
-        } else {
-            results.setText("Date 1 invalid");
+    private MediaView mv;
+    private MediaPlayer mediaPlayer;
+    private File file;
+    private Media media;
+    private ControllerCoffeeMaker coffeeMaker;
+    private TextArea textAreaField;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        file = new File("C:\\Jala\\progra101\\edson\\comercial.mp4");
+        media = new Media(file.toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        mv.setMediaPlayer(mediaPlayer);
+        mediaPlayer.play();
+        coffeeMaker = new ControllerCoffeeMaker();
+        textAreaField.setText("Welcome Coffee Maker \nConsole Area...");
+    }
+
+    @FXML
+    private void play_Video() {
+        coffeeMaker.initCoffeeMaker();
+        if (coffeeMaker.verifyConditionsForCoffeeMaker()) {
+            file = new File("C:\\Jala\\progra101\\edson\\startButton.mp4");
+            media = new Media(file.toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            mv.setMediaPlayer(mediaPlayer);
+            mediaPlayer.play();
+            textAreaField.setText(coffeeMaker.printForInterface());
         }
     }
 
-    private String verify(int date1, int date2, int date3) {
-        if (date1 == date2 && date2 == date3) {
-            return "Triangle is Equilateral";
-        } else {
-            if (date1 == date2 || date1 == date3 || date2 == date3) {
-                return "Triangle is Isosceles";
-            } else {
-                if (date1 != date2 || date1 != date3 || date3 != date2) {
-                    return "Triangle is Scalene";
-                }
-            }
+    @FXML
+    private void playWater() {
+        final int waterCups = 12;
+        if (coffeeMaker.loadWater(waterCups)) {
+            file = new File("C:\\Jala\\progra101\\edson\\water.mp4");
+            media = new Media(file.toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            mv.setMediaPlayer(mediaPlayer);
+            mediaPlayer.play();
+            textAreaField.setText(coffeeMaker.printForInterface());
         }
-        return "";
-    }
-
-    private boolean sanity(String date) {
-        if (date.equals("")) return false;
-        date = date.trim();
-        for (int i = 0; i < date.length(); i++) {
-            if ((int) date.charAt(i) < 48 || (int) date.charAt(i) > 57) {
-                return false;
-            }
-        }
-
-        int auxNum = Integer.parseInt(date);
-
-        if (auxNum < 1 || auxNum > 100) return false;
-
-        return true;
     }
 
     @FXML
-    private void clear(){
-        field1.setText("");
-        field2.setText("");
-        field3.setText("");
+    private void playCoffee() {
+        if (coffeeMaker.loadCoffeeBeans()) {
+            file = new File("C:\\Jala\\progra101\\edson\\beansCoffee.mp4");
+            media = new Media(file.toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            mv.setMediaPlayer(mediaPlayer);
+            mediaPlayer.play();
+            textAreaField.setText(coffeeMaker.printForInterface());
+        }
+
+
     }
+
+    @FXML
+    private void playPutPot() {
+        if (coffeeMaker.loadPotOverHeaterPlatePot()) {
+            file = new File("C:\\Jala\\progra101\\edson\\loadPot.mp4");
+            media = new Media(file.toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            mv.setMediaPlayer(mediaPlayer);
+            mediaPlayer.play();
+            textAreaField.setText(coffeeMaker.printForInterface());
+
+        }
+    }
+
+    @FXML
+    private void playRemovePot() {
+        if (coffeeMaker.removePotOverPlateHeater()) {
+            file = new File("C:\\Jala\\progra101\\edson\\removePot.mp4");
+            media = new Media(file.toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            mv.setMediaPlayer(mediaPlayer);
+            mediaPlayer.play();
+            textAreaField.setText(coffeeMaker.printForInterface());
+        }
+    }
+
+    @FXML
+    private void exitCoffee() {
+        coffeeMaker.exit();
+    }
+
 }
