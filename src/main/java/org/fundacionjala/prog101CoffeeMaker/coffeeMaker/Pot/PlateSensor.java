@@ -52,4 +52,12 @@ public class PlateSensor implements Sensor {
         statePlate = false;
     }
 
+    /**
+     * Obtain the state of plate
+     * @return boolean
+     */
+    public boolean obtainStatePlate() {
+        return statePlate;
+    }
+
 }

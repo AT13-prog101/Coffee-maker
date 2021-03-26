@@ -45,6 +45,14 @@ public class Pot implements Container, Heater {
     }
 
     /**
+     * obtain the state the pot is it is working or not
+     * @return boolean
+     */
+    public boolean obtainWorkingPot() {
+        return  workingPot;
+    }
+
+    /**
      * Gets the place where is the pot
      *
      * @return boolean

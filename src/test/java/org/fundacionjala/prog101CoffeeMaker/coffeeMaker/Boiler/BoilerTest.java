@@ -32,6 +32,37 @@ public class BoilerTest {
     }
 
     @Test
+    public void containLiquid_RestCoups_Eleven() {
+        Boiler boiler = new Boiler();
+        boiler.setCupsOfWater(12);
+        boiler.restOneCup();
+        int expected = 11;
+        int actual = boiler.amountOfLiquid();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void containLiquid_RestCoupsUntilZeroCoups_Zero() {
+        Boiler boiler = new Boiler();
+        boiler.setCupsOfWater(12);
+        boiler.restOneCup();
+        boiler.restOneCup();
+        boiler.restOneCup();
+        boiler.restOneCup();
+        boiler.restOneCup();
+        boiler.restOneCup();
+        boiler.restOneCup();
+        boiler.restOneCup();
+        boiler.restOneCup();
+        boiler.restOneCup();
+        boiler.restOneCup();
+        boiler.restOneCup();
+        int expected = 0;
+        int actual = boiler.amountOfLiquid();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void on_HeaterOn_True() {
         Boiler boiler = new Boiler();
         final int waterCups = 12;
